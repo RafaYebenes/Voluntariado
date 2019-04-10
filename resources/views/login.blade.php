@@ -16,6 +16,7 @@
     <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/animacionesEntradas.css">
 </head>
 <body >
     <div class="main-container">
@@ -27,7 +28,7 @@
                 <div class="row">
                     <div class="col-md-7 col-lg-5">
 
-                        <form id="formLogin">
+                        <form class="slideUp" id="formLogin">
                             <h2>Inicio Sesión Asociaciones</h2>
                             <div class="row">
                                 <div class="col-md-12">
@@ -37,10 +38,10 @@
                                     <input type="password" placeholder="Contraseña" />
                                 </div>
                                 <div class="col-md-6">
-                                    <button class="btn btn--primary type--uppercase" type="submit">Iniciar Sesión</button>
+                                    <a class="btn btn--primary type--uppercase" type="submit">Iniciar Sesión</a>
                                 </div>
                                 <div class="col-md-6">
-                                    <button class="btn btn-warning type--uppercase btn-lg" type="button" id="btnRegistro">Crear Cuenta</button>
+                                    <a class="btn btn-lg btn-warning type--uppercase " type="reset" id="btnRegistro" >Crear Cuenta</a>
                                 </div>
                             </div>
                             <!--end of row-->
@@ -49,40 +50,46 @@
                             </span>
                         </form>
 
-                        <form id="formRegistro">
+                        <form class="slideDown" id="formRegistro">
                             <h2>Registro Asociación</h2>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <img src="img/baseMan.png" style="border-radius: 50%; border: 7px solid #FEFFFD;" height="150px" width="150px" >
+                                    <img src="img/baseMan.png" style="border-radius: 50%; border: 2px solid #FEFFFD;" height="150px" width="150px" >
                                 </div>
 
                                 <div class="col-md-6">
                                     <input type="text" name="name" placeholder="Nombre *">
                                 </div>
                                 <div class="col-md-6">
-                                 <input type="text" name="direccion" placeholder="Dirección *">
-                             </div>
-                             <div class="col-md-6">
+                                   <input type="text" name="direccion" placeholder="Dirección *">
+                               </div>
+                               <div class="col-md-6">
                                 <input type="text" name="name" placeholder="Telefono *">
                             </div>
                             <div class="col-md-6">
-                             <input type="text" name="direccion" placeholder="Dirección *">
-                         </div>
-                         <div class="col-md-12">
-                            <input type="text" placeholder="Email *"/>
-                            <input type="password" placeholder="Contraseña *" />
+                                <input type="text" name="direccion" placeholder="Página Web *">
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Email *"/>
+                                <input type="password" placeholder="Contraseña *" />
+                            </div>
+                            <div class="col-md-6">
+                                <a class="btn btn--primary type--uppercase" type="submit">Registrar</a>
+                            </div>
+                            <div class="col-md-6">
+                                <a class="btn btn-warning type--uppercase btn-lg" type="button" id="btnVolver">Volver</a>
+                            </div>
                         </div>
-                    </div>
 
-                </form>
+                    </form>
 
 
+                </div>
             </div>
+            <!--end of row-->
         </div>
-        <!--end of row-->
-    </div>
-    <!--end of container-->
-</section>
+        <!--end of container-->
+    </section>
 </div>
 <!--<div class="loader"></div>-->
 <a class="back-to-top inner-link" href="#start" data-scroll-class="100vh:active">
@@ -112,9 +119,9 @@
         $('#formRegistro').show();
     });
     $('#btnVolver').click(function(){
-       $('#formLogin').show();
-       $('#formRegistro').hide();
-   });
+     $('#formLogin').show();
+     $('#formRegistro').hide();
+ });
 
 </script>
 </body>
