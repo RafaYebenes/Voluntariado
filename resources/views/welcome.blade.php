@@ -138,7 +138,7 @@ $asociaciones = 1;
                     <div class="col-md-6 col-lg-12">
 
                         <p class="lead">
-                            Inicie Sesión
+                            <h2>Inicie Sesión</h2>
                             <br class="hidden-xs hidden-sm" />
                         </p>
 
