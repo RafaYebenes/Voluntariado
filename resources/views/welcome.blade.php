@@ -11,6 +11,9 @@ $asociaciones = 1;
     <title>Laravel</title>
 
     <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/socicon.css" rel="stylesheet" type="text/css" media="all" />
@@ -21,9 +24,7 @@ $asociaciones = 1;
     <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/font-roboto.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="css/animacionesEntradas.css">
 
     <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
