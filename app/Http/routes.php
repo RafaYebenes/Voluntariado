@@ -10,6 +10,16 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
+//Controlador asociación
+
+Route::post('createAsociacion', 'asociacionController@create');
+
+//Fin controlador asociación
+
+
+
+
 Route::get('login',function(){
 	return view('login');
 });

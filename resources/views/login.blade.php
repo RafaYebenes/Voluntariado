@@ -19,6 +19,8 @@
     <link href="css/jquery.steps.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
     <link rel="stylesheet" type="text/css" href="css/animacionesEntradas.css">
@@ -26,19 +28,144 @@
 
 </head>
 <body >
-    <nav class="nav-container">
-        <a href="/">Home</a>
-    </nav>
 
-    <div class="main-container">
-        <section class="height-100 imagebg text-center" data-overlay="4">
-            <div class="background-image-holder">
-                <img alt="background" src="img/loginAsociacionFondo.png" />
+   <a id="start"></a>
+   <div class="nav-container ">
+
+    <nav id="menu1" class="bar bar--sm bar-1 hidden-xs bar--transparent bar--absolute">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1 col-md-2 hidden-xs">
+                    <div class="bar__module">
+                        <a href="/">
+                            Inicio
+                        </a>
+                    </div>
+                    <!--end module-->
+                </div>
+                <div class="col-lg-2 col-md-2 hidden-xs">
+                    <div class="bar__module">
+                        <a href="/#about">
+                            ¿Quienes Somos?
+                        </a>
+                    </div>
+                    <!--end module-->
+                </div>
+                <div class="col-lg-1 col-md-2 hidden-xs">
+                    <div class="bar__module">
+                        <a href="/#contact">
+                            Contacto
+                        </a>
+                    </div>
+                    <!--end module-->
+                </div>
             </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </nav>
+    <!--end bar-->
+</div>
+
+<div class="main-container">
+    <section class="height-100 imagebg text-center" data-overlay="4">
+        <div class="background-image-holder">
+            <img alt="background" src="img/loginAsociacionFondo.png" />
+        </div>
+        <div class="container pos-vertical-center">
+            <div class="row">
+                <div class="col-md-7 col-lg-5">
+
+                    <!--Formulario Inicio Sesión-->
+                    <form class="slideUp" id="formLogin">
+                       {!! csrf_field() !!}
+                       <div class="col-md-12">
+                        <img src="img/asociacion.png"  height="150px" width="150px" >
+                    </div>
+                    <h2>Inicio Sesión Asociaciones</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="text" placeholder="Email"/>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="password" placeholder="Contraseña" />
+                        </div>
+                        <div class="col-md-6">
+                            <a class="btn btn--primary type--uppercase" type="submit">Iniciar Sesión</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a class="btn  btn-warning type--uppercase " type="button" id="btnRegistro" >Crear Cuenta</a>
+                        </div>
+                    </div>
+
+                    <span class="type--fine-print block">¿Ha olvidado sus datos?
+                        <a href="page-accounts-recover.html">Recuperar cuenta</a>
+                    </span>
+                </form>
+                <!--Fin Formulario Inicio Sesión-->
+                <!--Cominezo Formulario Registro-->
+                <form class="slideDown" id="formRegistro" action="createAsociacion" method="post">
+                 {!! csrf_field() !!}
+                 <div class="col-md-12">
+                    <img src="img/asociacion.png"  height="150px" width="150px" >
+                </div>
+                <h2>Registro Asociación</h2>
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <input type="text" name="name" placeholder="Nombre *" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" name="telefono" placeholder="Telefono *" required>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="web" placeholder="Página Web *" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" name="pais" placeholder="Pais *" required>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="provincia" placeholder="Provincia *" required>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="poblacion" placeholder="Población *" required>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="cp" placeholder="Código Postal *" required>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" name="direccion" placeholder="Dirección *" required>
+                    </div>
+
+                    <div class="col-md-12">
+                        <input type="text" placeholder="Email *" name="email" required/>
+                        <input type="password" placeholder="Contraseña *"  name="password" required/>
+                    </div>
+
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Registro">
+
+                    </div>
+                    <div class="col-md-6">
+                        <a class="btn btn-warning type--uppercase btn-lg" type="button" id="btnVolver">Volver</a>
+                    </div>
+                </div>
+            </form>
+            <!--Fin Formulario Registro-->
+        </div>
+    </div>
+    <!--end of row-->
+</div>
+<!--end of container-->
+</section>
+</div>
 
 
 
-            <div class="container pos-vertical-center">
+
+            <!--<div class="container pos-vertical-center">
                 <div class="row">
                     <div class="col-md-7 col-lg-5">
 
@@ -61,7 +188,7 @@
                                     <a class="btn btn-lg btn-warning type--uppercase " type="reset" id="btnRegistro" >Crear Cuenta</a>
                                 </div>
                             </div>
-                            <!--end of row-->
+
                             <span class="type--fine-print block">¿Ha olvidado sus datos?
                                 <a href="page-accounts-recover.html">Recuperar cuenta</a>
                             </span>
@@ -118,39 +245,38 @@
                     <!--end of row-->
                 </div>
                 <!--end of container-->
-            </div>
-        </section>
-    </div>
-    <!--<div class="loader"></div>-->
+                <!--</div>-->
 
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/flickity.min.js"></script>
-    <script src="js/easypiechart.min.js"></script>
-    <script src="js/parallax.js"></script>
-    <script src="js/typed.min.js"></script>
-    <script src="js/datepicker.js"></script>
-    <script src="js/isotope.min.js"></script>
-    <script src="js/ytplayer.min.js"></script>
-    <script src="js/lightbox.min.js"></script>
-    <script src="js/granim.min.js"></script>
-    <script src="js/jquery.steps.min.js"></script>
-    <script src="js/countdown.min.js"></script>
-    <script src="js/twitterfetcher.min.js"></script>
-    <script src="js/spectragram.min.js"></script>
-    <script src="js/smooth-scroll.min.js"></script>
-    <script src="js/scripts.js"></script>
+                <!--<div class="loader"></div>-->
 
-    <script type="text/javascript">
-        $('#formRegistro').hide();
-        $('#btnRegistro').click(function(){
-            $('#formLogin').hide();
-            $('#formRegistro').show();
-        });
-        $('#btnVolver').click(function(){
-           $('#formLogin').show();
-           $('#formRegistro').hide();
-       });
+                <script src="js/jquery-3.1.1.min.js"></script>
+                <script src="js/flickity.min.js"></script>
+                <script src="js/easypiechart.min.js"></script>
+                <script src="js/parallax.js"></script>
+                <script src="js/typed.min.js"></script>
+                <script src="js/datepicker.js"></script>
+                <script src="js/isotope.min.js"></script>
+                <script src="js/ytplayer.min.js"></script>
+                <script src="js/lightbox.min.js"></script>
+                <script src="js/granim.min.js"></script>
+                <script src="js/jquery.steps.min.js"></script>
+                <script src="js/countdown.min.js"></script>
+                <script src="js/twitterfetcher.min.js"></script>
+                <script src="js/spectragram.min.js"></script>
+                <script src="js/smooth-scroll.min.js"></script>
+                <script src="js/scripts.js"></script>
 
-   </script>
-</body>
-</html>
+                <script type="text/javascript">
+                    $('#formRegistro').hide();
+                    $('#btnRegistro').click(function(){
+                        $('#formLogin').hide();
+                        $('#formRegistro').show();
+                    });
+                    $('#btnVolver').click(function(){
+                     $('#formLogin').show();
+                     $('#formRegistro').hide();
+                 });
+
+             </script>
+         </body>
+         </html>
