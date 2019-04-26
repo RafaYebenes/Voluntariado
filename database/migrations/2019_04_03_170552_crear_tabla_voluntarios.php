@@ -18,7 +18,7 @@ class CrearTablaVoluntarios extends Migration
             $table->string('nombre',50);
             $table->string('apellidos',50);
             $table->datetime('edad');
-            $table->string('email',50)->unique;
+            $table->string('email',50)->unique();
             $table->string('password',250);
             $table->integer('telefono')->unsigned();
             $table->integer('puntuacion')->unsigned();

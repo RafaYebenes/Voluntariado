@@ -22,7 +22,7 @@ class CrearTablaAsociacion extends Migration
             $table->string('provincia',50);
             $table->string('poblacion',100);
             $table->integer('cp')->unsigned();
-            $table->string('email',50)->unique;
+            $table->string('email',50)->unique();
             $table->string('password', 250);
             $table->string('web',50);
             $table->integer('telefono')->unsigned();
