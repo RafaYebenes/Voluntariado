@@ -182,9 +182,8 @@
                 </li>
 
 
-                <li class="nav-small-cap">--- Support</li>
-                <li><a href="documentation.html" class="waves-effect"><i class="fa fa-circle-o text-danger"></i> <span class="hide-menu">Documentation</span></a></li>
-                <li><a href="gallery.html" class="waves-effect"><i class="fa fa-circle-o text-info"></i> <span class="hide-menu">Gallery</span></a></li>
+                <li class="nav-small-cap">--- Soporte</li>
+                <li><a href="documentation.html" class="waves-effect"><i class="fa fa-circle-o text-danger"></i> <span class="hide-menu">Ayuda</span></a></li>
                 <li><a href="faq.html" class="waves-effect"><i class="fa fa-circle-o text-success"></i> <span class="hide-menu">Faqs</span></a></li>
             </ul>
         </div>
@@ -195,14 +194,7 @@
         <div class="container-fluid">
             <div class="row bg-title">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h4 class="page-title">Dashboard 1</h4>
-                </div>
-                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                    <a href="https://themeforest.net/item/elite-admin-responsive-dashboard-web-app-kit-/16750820" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
-                    <ol class="breadcrumb">
-                        <li><a href="#">Dashboard</a></li>
-                        <li class="active">Dashboard 1</li>
-                    </ol>
+                    <h4 class="page-title">Panel de Administración</h4>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
