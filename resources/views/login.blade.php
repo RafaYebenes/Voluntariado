@@ -91,7 +91,7 @@
                             <input type="password" placeholder="Contraseña" />
                         </div>
                         <div class="col-md-6">
-                            <a class="btn btn--primary type--uppercase" type="submit">Iniciar Sesión</a>
+                            <a class="btn btn--primary type--uppercase" type="submit" href="adminPanelAsociacion">Iniciar Sesión</a>
                         </div>
                         <div class="col-md-6">
                             <a class="btn  btn-warning type--uppercase " type="button" id="btnRegistro" >Crear Cuenta</a>

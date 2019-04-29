@@ -23,6 +23,9 @@ Route::post('createAsociacion', 'asociacionController@create');
 Route::get('login',function(){
 	return view('login');
 });
+Route::get('adminPanelAsociacion', function(){
+	return view('adminPanelAsociacion');
+});
 Route::get('/', function () {
 	return view('welcome');
 });
