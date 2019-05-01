@@ -27,10 +27,27 @@
     <link rel="stylesheet" type="text/css" href="css/myStyle.css">
 
 </head>
+
 <body >
 
-   <a id="start"></a>
-   <div class="nav-container ">
+
+    @if ( Session::has('send') )
+    <div class="alert alert-success margin-b-30">
+      {{Session::get('send')}}
+  </div>
+  @endif
+
+  @if (count($errors) > 0)
+  <div class="alert alert-danger margin-b-30">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+<a id="start"></a>
+<div class="nav-container ">
 
     <nav id="menu1" class="bar bar--sm bar-1 hidden-xs bar--transparent bar--absolute">
         <div class="container">
@@ -77,21 +94,21 @@
                 <div class="col-md-7 col-lg-5">
 
                     <!--Formulario Inicio Sesión-->
-                    <form class="slideUp" id="formLogin">
-                       {!! csrf_field() !!}
-                       <div class="col-md-12">
+                    <form class="slideUp" id="formLogin" action="loginAsociacion" method="post">
+                     {!! csrf_field() !!}
+                     <div class="col-md-12">
                         <img src="img/asociacion.png"  height="150px" width="150px" >
                     </div>
                     <h2>Inicio Sesión Asociaciones</h2>
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="text" placeholder="Email"/>
+                            <input type="text" name="email" placeholder="Email"/>
                         </div>
                         <div class="col-md-12">
-                            <input type="password" placeholder="Contraseña" />
+                            <input type="password" name="password" placeholder="Contraseña" />
                         </div>
                         <div class="col-md-6">
-                            <a class="btn btn--primary type--uppercase" type="submit" href="adminPanelAsociacion">Iniciar Sesión</a>
+                            <input type="submit" class="btn btn-primary type--uppercase btn-lg btn-block" value="Iniciar Sesión">
                         </div>
                         <div class="col-md-6">
                             <a class="btn  btn-warning type--uppercase " type="button" id="btnRegistro" >Crear Cuenta</a>
@@ -105,8 +122,8 @@
                 <!--Fin Formulario Inicio Sesión-->
                 <!--Cominezo Formulario Registro-->
                 <form class="slideDown" id="formRegistro" action="createAsociacion" method="post">
-                 {!! csrf_field() !!}
-                 <div class="col-md-12">
+                   {!! csrf_field() !!}
+                   <div class="col-md-12">
                     <img src="img/asociacion.png"  height="150px" width="150px" >
                 </div>
                 <h2>Registro Asociación</h2>
@@ -145,7 +162,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Registro">
+                        <input type="submit" class="btn btn-primary type--uppercase btn-lg btn-block" value="Registro">
 
                     </div>
                     <div class="col-md-6">
@@ -273,10 +290,10 @@
                         $('#formRegistro').show();
                     });
                     $('#btnVolver').click(function(){
-                     $('#formLogin').show();
-                     $('#formRegistro').hide();
-                 });
+                       $('#formLogin').show();
+                       $('#formRegistro').hide();
+                   });
 
-             </script>
-         </body>
-         </html>
+               </script>
+           </body>
+           </html>

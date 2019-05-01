@@ -17,7 +17,6 @@ use Config;
 class asociacionController extends Controller
 {
 	public function create(Request $request){
-		$var = "validar  valida";
 
 		$this->validate($request, [
 			'name'      => 'required',
@@ -49,6 +48,33 @@ class asociacionController extends Controller
 		if($asociacion->save()){
 			return Redirect::to('login')->with('send','Registro completado con exito!');
 		}
+	}
+	public function login(Request $request){
 
+		$this->validate($request, [
+			'email'     => 'required',
+			'password'  => 'required',
+		]);
+
+		$email = $request->input('email');
+		$password = $request->input('password');
+
+		$asociacion = asociacion::where('email',$email)->first();
+
+		if($asociacion!=null){
+
+			if($asociacion->password == $password){
+				return Redirect::to('adminPanelAsociacion?asociacion='.$asociacion->id);
+			}else{
+				return Redirect::to('login')->with('send','Contraseña Erronea');
+			}
+		}else{
+			return Redirect::to('login')->with('send','Email incorrecto');
+		}
+	}
+
+	public function	logOut(){
+		Auth::logout();
+		return Redirect::to('');
 	}
 }

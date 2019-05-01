@@ -14,7 +14,8 @@
 //Controlador asociación
 
 Route::post('createAsociacion', 'asociacionController@create');
-
+Route::post('loginAsociacion', 'asociacionController@login');
+Route::get('cerrarSesionAso', 'asociacionController@logOut');
 //Fin controlador asociación
 
 

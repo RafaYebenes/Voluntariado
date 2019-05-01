@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+
+<?php
+use App\asociacion;
+
+$asociacionId = Request::input('asociacion');
+
+if($asociacionId){
+    $asociacion = asociacion::find($asociacionId);
+}
+?>
+
 <html lang="en">
 
 <head>
@@ -145,14 +156,14 @@
         <div class="user-profile">
             <div class="dropdown user-pro-body">
                 <div><img src="eliteAdmin/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"></div>
-                <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Steave Gection <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ $asociacion->nombre }} <span class="caret"></span></a>
                 <ul class="dropdown-menu animated flipInY">
                     <li><a href="#"><i class="ti-user"></i> Perfil</a></li>
                     <li><a href="#"><i class="ti-email"></i> Mensajes</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#"><i class="ti-settings"></i> Ajustes de Cuenta</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="login.html"><i class="fa fa-power-off"></i> Salir</a></li>
+                    <li><a href="cerrarSesionAso"><i class="fa fa-power-off"></i> Salir</a></li>
                 </ul>
             </div>
         </div>
