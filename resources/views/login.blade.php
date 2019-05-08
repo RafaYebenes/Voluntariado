@@ -102,10 +102,10 @@
                     <h2>Inicio Sesión Asociaciones</h2>
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="text" name="email" placeholder="Email"/>
+                            <input type="text" name="email" placeholder="Email" />
                         </div>
                         <div class="col-md-12">
-                            <input type="password" name="password" placeholder="Contraseña" />
+                            <input type="password" name="password" placeholder="Contraseña" value=""/>
                         </div>
                         <div class="col-md-6">
                             <input type="submit" class="btn btn-primary type--uppercase btn-lg btn-block" value="Iniciar Sesión">
