@@ -1132,3 +1132,9 @@ stretchRight
 		transform: scale(0);
 	}
 }
+
+.btnPropio{
+	text-align: center;
+	text-decoration-color: 	#FFFFFE ;
+	background-color: #FFD436;
+}

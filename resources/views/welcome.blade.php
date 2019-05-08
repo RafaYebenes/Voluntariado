@@ -147,7 +147,7 @@ $asociaciones = 1;
                                 Soy una Asociación
                             </span>
                         </a>
-                        <a class="btn btn--primary type--uppercase" href="#">
+                        <a class="btn btn--primary type--uppercase" type="button" data-toggle="modal" data-target="#modalUsuario" id="btnModalUsuario">
                             <span class="btn__text">
                                 Soy un Usuario
                             </span>
@@ -292,28 +292,69 @@ $asociaciones = 1;
                     </div>
                     <!--end of row-->
                 </div>
+                <!--Modal Usuarios  No se muestran los campos de texto-->
+                <div class="modal" id="modalUsuario"  role="dialog" aria-labelledby="exampleModalLabel" >
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Inicio de Sesión</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Email</label>
+                                    <input type="text" required name="email" class="form-control" id="emailUsuario">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Contraseña</label>
+                                    <input type="password" required name="password" class="form-control" id="passwordUsuario">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary ">Iniciar Sesión</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrarModal">Cerrar</button>
 
-                <!--Fin Home Page -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Fin Modal Usuarios-->
+            <!--Fin Home Page -->
 
-                <script src="js/jquery-3.1.1.min.js"></script>
-                <script src="js/flickity.min.js"></script>
-                <script src="js/easypiechart.min.js"></script>
-                <script src="js/parallax.js"></script>
-                <script src="js/typed.min.js"></script>
-                <script src="js/datepicker.js"></script>
-                <script src="js/isotope.min.js"></script>
-                <script src="js/ytplayer.min.js"></script>
-                <script src="js/lightbox.min.js"></script>
-                <script src="js/granim.min.js"></script>
-                <script src="js/jquery.steps.min.js"></script>
-                <script src="js/countdown.min.js"></script>
-                <script src="js/twitterfetcher.min.js"></script>
-                <script src="js/spectragram.min.js"></script>
-                <script src="js/smooth-scroll.min.js"></script>
-                <script src="js/scripts.js"></script>
+            <script src="js/jquery-3.1.1.min.js"></script>
+            <script src="js/flickity.min.js"></script>
+            <script src="js/easypiechart.min.js"></script>
+            <script src="js/parallax.js"></script>
+            <script src="js/typed.min.js"></script>
+            <script src="js/datepicker.js"></script>
+            <script src="js/isotope.min.js"></script>
+            <script src="js/ytplayer.min.js"></script>
+            <script src="js/lightbox.min.js"></script>
+            <script src="js/granim.min.js"></script>
+            <script src="js/jquery.steps.min.js"></script>
+            <script src="js/countdown.min.js"></script>
+            <script src="js/twitterfetcher.min.js"></script>
+            <script src="js/spectragram.min.js"></script>
+            <script src="js/smooth-scroll.min.js"></script>
+            <script src="js/scripts.js"></script>
 
+            <script type="text/javascript">
+                $('#modalUsuario').hide()
+                $('#btnModalUsuario').click( function(){
+                   $('#modalUsuario').find('#modal-title').text('New message to ')
+                   $('#modalUsuario').show()
 
-            </body>
-            </html>
+               });
+                $('#cerrarModal').click(function(){
+                    $('#modalUsuario').hide()
+                });
+
+            </script>
+        </body>
+        </html>
 
 

@@ -23,9 +23,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
+
     <link rel="stylesheet" type="text/css" href="css/animacionesEntradas.css">
     <link rel="stylesheet" type="text/css" href="css/myStyle.css">
-
 </head>
 
 <body >
@@ -95,8 +95,8 @@
 
                     <!--Formulario Inicio Sesión-->
                     <form class="slideUp" id="formLogin" action="loginAsociacion" method="post">
-                     {!! csrf_field() !!}
-                     <div class="col-md-12">
+                       {!! csrf_field() !!}
+                       <div class="col-md-12">
                         <img src="img/asociacion.png"  height="150px" width="150px" >
                     </div>
                     <h2>Inicio Sesión Asociaciones</h2>
@@ -108,10 +108,11 @@
                             <input type="password" name="password" placeholder="Contraseña" value=""/>
                         </div>
                         <div class="col-md-6">
-                            <input type="submit" class="btn btn-primary type--uppercase btn-lg btn-block" value="Iniciar Sesión">
+                            <button type="submit" class=" btn btn-primary type--uppercase btn-lg btn-block " > Iniciar Sesión   </button>
                         </div>
                         <div class="col-md-6">
-                            <a class="btn  btn-warning type--uppercase " type="button" id="btnRegistro" >Crear Cuenta</a>
+                            <button type="button" class="btn btn-warning type--uppercase  btn-block" id="btnRegistro">Crear Cuenta</button>
+                            <!--<a class=" btn btn-warning type--uppercase  " type="button" id="btnRegistro">Crear Cuenta</a>-->
                         </div>
                     </div>
 
@@ -122,8 +123,8 @@
                 <!--Fin Formulario Inicio Sesión-->
                 <!--Cominezo Formulario Registro-->
                 <form class="slideDown" id="formRegistro" action="createAsociacion" method="post">
-                   {!! csrf_field() !!}
-                   <div class="col-md-12">
+                 {!! csrf_field() !!}
+                 <div class="col-md-12">
                     <img src="img/asociacion.png"  height="150px" width="150px" >
                 </div>
                 <h2>Registro Asociación</h2>
@@ -162,18 +163,18 @@
                     </div>
 
                     <div class="col-md-6">
-                        <input type="submit" class="btn btn-primary type--uppercase btn-lg btn-block" value="Registro">
+                       <button type="submit" class=" btn btn-primary type--uppercase btn-lg btn-block " > Registro  </button>
+                   </div>
+                   <div class="col-md-6">
 
-                    </div>
-                    <div class="col-md-6">
-                        <a class="btn btn-warning type--uppercase btn-lg" type="button" id="btnVolver">Volver</a>
-                    </div>
+                    <button type="button" class="btn btn-warning type--uppercase  btn-block" id="btnVolver">Volver</button>
                 </div>
-            </form>
-            <!--Fin Formulario Registro-->
-        </div>
+            </div>
+        </form>
+        <!--Fin Formulario Registro-->
     </div>
-    <!--end of row-->
+</div>
+<!--end of row-->
 </div>
 <!--end of container-->
 </section>
@@ -290,10 +291,10 @@
                         $('#formRegistro').show();
                     });
                     $('#btnVolver').click(function(){
-                       $('#formLogin').show();
-                       $('#formRegistro').hide();
-                   });
+                     $('#formLogin').show();
+                     $('#formRegistro').hide();
+                 });
 
-               </script>
-           </body>
-           </html>
+             </script>
+         </body>
+         </html>
