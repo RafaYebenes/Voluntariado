@@ -163,7 +163,7 @@ if($asociacionId){
                     <li role="separator" class="divider"></li>
                     <li><a href="#"><i class="ti-settings"></i> Ajustes de Cuenta</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="cerrarSesionAso"><i class="fa fa-power-off"></i> Salir</a></li>
+                    <li><a href="cerrarSesionAso"><i class="fa fa-power-off"></i>  Salir</a></li>
                 </ul>
             </div>
         </div>
