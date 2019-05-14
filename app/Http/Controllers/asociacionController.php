@@ -40,7 +40,7 @@ class asociacionController extends Controller
 			'poblacion' => $request->input('poblacion'),
 			'cp'        => $request->input('cp'),
 			'email'     => $request->input('email'),
-			'password'  => $request->input('password'),
+			'password'  => bcrypt($request->input('password')),
 			'web'       => $request->input('web'),
 			'telefono'  => $request->input('telefono'),
 		));
