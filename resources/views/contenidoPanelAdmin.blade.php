@@ -8,6 +8,20 @@
 @parent
 @endsection
 
+
+<?php
+use App\asociacion;
+use App\usuario;
+$asociacionId = Request::input('asociacion');
+
+if($asociacionId){
+    $asociacion = asociacion::find($asociacionId);
+    $numUsuarios = usuario::where('id_asociacion','=',$asociacionId)->count();
+
+}
+?>
+
+
 @section('Contenido')
 <div id="page-wrapper">
     <div class="container-fluid">
