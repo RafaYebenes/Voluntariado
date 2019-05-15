@@ -122,7 +122,7 @@
                 <div class="col-md-7 col-lg-5">
 
                     <!--Formulario Inicio Sesión-->
-                    <form class="slideUp" id="formLogin" action="loginAsociacion" method="post">
+                    <form class="slideUp" id="formLogin" action="/auth/login" method="post">
                      {!! csrf_field() !!}
                      <div class="col-md-12">
                         <img src="img/asociacion.png"  height="150px" width="150px" >

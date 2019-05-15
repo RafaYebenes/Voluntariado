@@ -3,7 +3,7 @@
 <?php
 use App\asociacion;
 use App\usuario;
-$asociacionId = Request::input('asociacion');
+$asociacionId = Auth::id();
 
 if($asociacionId){
 	$asociacion = asociacion::find($asociacionId);
@@ -110,7 +110,8 @@ if($asociacionId){
 				<div class="user-profile">
 					<div class="dropdown user-pro-body">
 						<div><img src="eliteAdmin/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"></div>
-						<a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+
+						<a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ $asociacion->nombre }}<span class="caret"></span></a>
 						<ul class="dropdown-menu animated flipInY">
 							<li><a href="#"><i class="ti-user"></i> Perfil</a></li>
 							<li><a href="#"><i class="ti-email"></i> Mensajes</a></li>
@@ -133,7 +134,7 @@ if($asociacionId){
 					</li>
 					<li class="nav-small-cap m-t-10">--- Menu Principal</li>
 					<li>
-						<a href="/homeAdminPanel/{{ $asociacionId }}" class=" active"><i class="" data-icon=""></i>
+						<a href="/" class=" active"><i class="" data-icon=""></i>
 							<span class="hide-menu"> Inicio </span>
 						</a>
 					</li>
@@ -144,7 +145,7 @@ if($asociacionId){
 						</a>
 						<ul class="nav nav-second-level">
 							<li> <a href="#">Gestionar Usuarios</a> </li>
-							<li> <a href="crearUsuario/{{ $asociacionId }}">Crear Usuarios</a> </li>
+							<li> <a href="crearUsuario">Crear Usuarios</a> </li>
 						</ul>
 					</li>
 

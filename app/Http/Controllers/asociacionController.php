@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 use App\Http\Requests;
 use App\asociacion;
@@ -47,31 +48,6 @@ class asociacionController extends Controller
 
 		if($asociacion->save()){
 			return Redirect::to('login')->with('send','Registro completado con exito!');
-		}
-	}
-	public function login(Request $request){
-
-		$this->validate($request, [
-			'email'     => 'required',
-			'password'  => 'required',
-		]);
-
-		$email = $request->input('email');
-		$password = $request->input('password');
-
-		$asociacion = asociacion::where('email',$email)->first();
-
-		if($asociacion!=null){
-
-			if(password_verify($password, $asociacion->password)){
-
-				return Redirect::to('contenidoPanelAdmin?asociacion='.$asociacion->id);
-
-			}else{
-				return Redirect::to('login')->with('send','Contraseña Erronea');
-			}
-		}else{
-			return Redirect::to('login')->with('send','Email incorrecto');
 		}
 	}
 

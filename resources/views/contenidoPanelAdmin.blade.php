@@ -12,7 +12,8 @@
 <?php
 use App\asociacion;
 use App\usuario;
-$asociacionId = Request::input('asociacion');
+
+$asociacionId = Auth::id();
 
 if($asociacionId){
     $asociacion = asociacion::find($asociacionId);

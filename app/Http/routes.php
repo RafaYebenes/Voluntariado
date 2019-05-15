@@ -14,29 +14,32 @@
 //Controlador asociación
 
 Route::post('createAsociacion', 'asociacionController@create');
-Route::post('loginAsociacion', 'asociacionController@login');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+//Route::post('loginAsociacion', 'asociacionController@login');
 Route::get('cerrarSesionAso', 'asociacionController@logOut');
 //Fin controlador asociación
 
 //Controlador Panel de Administración
 Route::get('homeAdminPanel/{id}', 'adminPanel@home');
-Route::get('crearUsuario/{id}', 'adminPanel@createUser');
-//FIn Controlador Panel de Administración
 
+//FIn Controlador Panel de Administración
+Route::group(['middleware' => 'auth'], function () {
+
+	Route::get('crearUsuario', function(){
+		return view('crearUsuario');
+	});
+});
 
 
 Route::get('loginAso',function(){
-	return view('loginAso');
+	return view('auth/loginAso');
 });
 
 Route::get('loginVoluntario',function(){
 	return view('loginVoluntario');
 });
 
-Route::get('contenidoPanelAdmin', function(){
-	return view('contenidoPanelAdmin');
-});
 
 Route::get('/', function () {
-	return view('welcome');
+	return Auth::check()? view('contenidoPanelAdmin') : view('welcome');
 });

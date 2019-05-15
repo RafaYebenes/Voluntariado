@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\asociacion;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -54,6 +54,8 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
     }
+
+
 
     /**
      * Create a new user instance after a valid registration.
