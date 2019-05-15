@@ -142,7 +142,7 @@ $asociaciones = 1;
                             <br class="hidden-xs hidden-sm" />
                         </p>
 
-                        <a class="btn btn--primary type--uppercase" href="login">
+                        <a class="btn btn--primary type--uppercase" href="loginAso">
                             <span class="btn__text">
                                 Soy una Asociación
                             </span>
@@ -155,13 +155,13 @@ $asociaciones = 1;
                                     Soy un Usuario
                                 </span>
                             </a>
-                            <div class="modal-container   ">
-                                <div class="modal-content section-modal ">
+                            <div class="modal-container ">
+                                <div class="modal-content section-modal">
                                     <div class="container  ">
                                         <div class="">
-                                            <div class="feature feature-1 ">
+                                            <div class="feature feature-1">
                                                 <div class="feature__body boxed  text-center ">
-                                                    <div class="modal-close modal-close-cross"></div>
+                                                    <div class="modal-close modal-close-cross "></div>
                                                     <div class="text-block">
                                                         <h3>Accede a tu perfil</h3>
                                                         <p>
@@ -193,7 +193,7 @@ $asociaciones = 1;
                         </div>
 
                         <!--Fin Modal-->
-                        <a class="btn btn--primary type--uppercase" href="#">
+                        <a class="btn btn--primary type--uppercase" href="loginVoluntario">
                             <span class="btn__text">
                                 Soy un Voluntario
                             </span>

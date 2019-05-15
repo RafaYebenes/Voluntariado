@@ -21,8 +21,12 @@ Route::get('cerrarSesionAso', 'asociacionController@logOut');
 
 
 
-Route::get('login',function(){
-	return view('login');
+Route::get('loginAso',function(){
+	return view('loginAso');
+});
+
+Route::get('loginVoluntario',function(){
+	return view('loginVoluntario');
 });
 Route::get('adminPanelAsociacion', function(){
 	return view('adminPanelAsociacion');

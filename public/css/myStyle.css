@@ -21,3 +21,7 @@
 	text-decoration-color: 	#FFFFFE ;
 	background-color: #FFD436;
 }
+
+.datepicker {
+	z-index: 9999 !important;
+}
