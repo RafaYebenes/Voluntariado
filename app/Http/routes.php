@@ -18,6 +18,10 @@ Route::post('loginAsociacion', 'asociacionController@login');
 Route::get('cerrarSesionAso', 'asociacionController@logOut');
 //Fin controlador asociación
 
+//Controlador Panel de Administración
+Route::get('homeAdminPanel/{id}', 'adminPanel@home');
+Route::get('crearUsuario/{id}', 'adminPanel@createUser');
+//FIn Controlador Panel de Administración
 
 
 
@@ -28,9 +32,11 @@ Route::get('loginAso',function(){
 Route::get('loginVoluntario',function(){
 	return view('loginVoluntario');
 });
-Route::get('adminPanelAsociacion', function(){
-	return view('adminPanelAsociacion');
+
+Route::get('contenidoPanelAdmin', function(){
+	return view('contenidoPanelAdmin');
 });
+
 Route::get('/', function () {
 	return view('welcome');
 });

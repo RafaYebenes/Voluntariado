@@ -64,7 +64,9 @@ class asociacionController extends Controller
 		if($asociacion!=null){
 
 			if(password_verify($password, $asociacion->password)){
-				return Redirect::to('adminPanelAsociacion?asociacion='.$asociacion->id);
+
+				return Redirect::to('contenidoPanelAdmin?asociacion='.$asociacion->id);
+
 			}else{
 				return Redirect::to('login')->with('send','Contraseña Erronea');
 			}
