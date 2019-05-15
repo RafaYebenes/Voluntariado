@@ -15,6 +15,11 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
+    'photo_max_size' => '5072',
+    /**
+     * Rutas para fotos
+     */
+    'url_user_avatar' => 'uploads/usersAvatar',
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
@@ -147,7 +152,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -185,6 +190,7 @@ return [
         'File' => Illuminate\Support\Facades\File::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
+        'Image'=> Intervention\Image\Facades\Image::class,
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,

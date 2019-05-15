@@ -47,12 +47,12 @@ class asociacionController extends Controller
 		));
 
 		if($asociacion->save()){
-			return Redirect::to('login')->with('send','Registro completado con exito!');
+			return Redirect::to('auth/login')->with('send','Registro completado con exito!');
 		}
 	}
 
 	public function	logOut(){
 		Auth::logout();
-		return Redirect::to('');
+		return Redirect::to('/');
 	}
 }

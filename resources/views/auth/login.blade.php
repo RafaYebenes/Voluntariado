@@ -1,6 +1,6 @@
-<!doctype html>
-<html lang="es">
-<head>
+ <!doctype html>
+ <html lang="es">
+ <head>
     <meta charset="utf-8">
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,8 +95,8 @@
 
                     <!--Formulario Inicio Sesión-->
                     <form class="slideUp" id="formLogin" action="/auth/login" method="post">
-                       {!! csrf_field() !!}
-                       <div class="col-md-12">
+                     {!! csrf_field() !!}
+                     <div class="col-md-12">
                         <img src="img/asociacion.png"  height="150px" width="150px" >
                     </div>
                     <h2>Inicio Sesión Asociaciones</h2>
@@ -123,8 +123,8 @@
                 <!--Fin Formulario Inicio Sesión-->
                 <!--Cominezo Formulario Registro-->
                 <form class="slideDown" id="formRegistro" action="createAsociacion" method="post">
-                 {!! csrf_field() !!}
-                 <div class="col-md-12">
+                   {!! csrf_field() !!}
+                   <div class="col-md-12">
                     <img src="img/asociacion.png"  height="150px" width="150px" >
                 </div>
                 <h2>Registro Asociación</h2>
@@ -163,9 +163,9 @@
                     </div>
 
                     <div class="col-md-6">
-                       <button type="submit" class=" btn btn-primary type--uppercase btn-lg btn-block " > Registro  </button>
-                   </div>
-                   <div class="col-md-6">
+                     <button type="submit" class=" btn btn-primary type--uppercase btn-lg btn-block " > Registro  </button>
+                 </div>
+                 <div class="col-md-6">
 
                     <button type="button" class="btn btn-warning type--uppercase  btn-block" id="btnVolver">Volver</button>
                 </div>
@@ -291,10 +291,10 @@
                         $('#formRegistro').show();
                     });
                     $('#btnVolver').click(function(){
-                     $('#formLogin').show();
-                     $('#formRegistro').hide();
-                 });
+                       $('#formLogin').show();
+                       $('#formRegistro').hide();
+                   });
 
-             </script>
-         </body>
-         </html>
+               </script>
+           </body>
+           </html>

@@ -21,7 +21,7 @@ if($asociacionId){
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" type="image/png" sizes="16x16" href="eliteAdmin/plugins/images/favicon.png">
-	<title>Elite Admin Template - The Ultimate Multipurpose admin template</title>
+	<title>Voluntariado </title>
 	<!-- Bootstrap Core CSS -->
 	<link href="eliteAdmin/estilos/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="eliteAdmin/plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
@@ -62,6 +62,9 @@ if($asociacionId){
 </head>
 
 <body>
+
+
+
 	<!-- Preloader -->
 	<div class="preloader">
 		<div class="cssload-speeding-wheel"></div>
@@ -71,12 +74,12 @@ if($asociacionId){
 		@section('navBar')
 		<nav class="navbar navbar-default navbar-static-top m-b-0">
 			<div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
-				<div class="top-left-part"><a class="logo" href="index.html"><b><!--This is dark logo icon--><img src="eliteAdmin/plugins/images/eliteadmin-logo.png" alt="home" class="dark-logo" /><!--This is light logo     icon--><img src="eliteAdmin/plugins/images/eliteadmin-logo-dark.png" alt="home" class="light-logo" /></b><span class="hidden-xs"><!--This is dark logo text--><img src="eliteAdmin/plugins/images/eliteadmin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="eliteAdmin/plugins/images/eliteadmin-text-dark.png" alt="home" class="light-logo" /></span></a></div>
+				<div class="top-left-part"><a class="logo" href="/"><b><!--This is dark logo icon--><img src="img/asociacionWhite.png" width="50%" height="50%" alt="home" class="dark-logo" /><!--This is light logo     icon--><img src="img/asociacionWhite.png" alt="home" class="light-logo" /></b><span class="hidden-xs">Voluntariado<!--This is light logo text--><img src="img/asociacionWhite.png" alt="home" class="light-logo" /></span></a></div>
 				<ul class="nav navbar-top-links navbar-left hidden-xs">
-					<li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
+					<li><a href="#" class="open-close hidden-xs waves-effect waves-light"></a></li>
 					<li>
 						<form role="search" class="app-search hidden-xs">
-							<input type="text" placeholder="Search..." class="form-control">
+							<input type="text" placeholder="Buscar..." class="form-control">
 							<a href=""><i class="fa fa-search"></i></a>
 						</form>
 					</li>
@@ -145,7 +148,7 @@ if($asociacionId){
 						</a>
 						<ul class="nav nav-second-level">
 							<li> <a href="#">Gestionar Usuarios</a> </li>
-							<li> <a href="crearUsuario">Crear Usuarios</a> </li>
+							<li> <a href="GoToCrearUsuario">Crear Usuarios</a> </li>
 						</ul>
 					</li>
 
@@ -171,6 +174,7 @@ if($asociacionId){
 		</div>
 
 		<div >
+
 			@yield('Contenido')
 		</div>
 
@@ -217,7 +221,14 @@ if($asociacionId){
 		<script src="eliteAdmin/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
 		<script src="eliteAdmin/plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js"></script>
 		<script src="eliteAdmin/plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+		<script src="eliteAdmin/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+		<script src="eliteAdmin/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
+		<script src="eliteAdmin/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
+		<script src="eliteAdmin/plugins/bower_components/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+		<script src="eliteAdmin/plugins/bower_components/moment/moment.js"></script>
+		<script src="eliteAdmin/estilos/js/custom.min.js"></script>
 		<script type="text/javascript">
+
 			$(document).ready(function() {
 				$.toast({
 					heading: 'Welcome to Elite admin',
@@ -230,6 +241,21 @@ if($asociacionId){
 					stack: 6
 				})
 			});
+			//Datepicker jquery
+			jQuery('.mydatepicker, #datepicker').datepicker();
+			jQuery('#datepicker-autoclose').datepicker({
+				autoclose: true,
+				todayHighlight: true
+			});
+			jQuery('#date-range').datepicker({
+				toggleActive: true
+			});
+			jQuery('#datepicker-inline').datepicker({
+
+				todayHighlight: true
+			});
+			//Fin Datepicker Jquery
+
 		</script>
 		<!--Style Switcher -->
 		<script src="eliteAdmin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>

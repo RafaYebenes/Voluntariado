@@ -25,7 +25,11 @@ Route::get('homeAdminPanel/{id}', 'adminPanel@home');
 //FIn Controlador Panel de Administración
 Route::group(['middleware' => 'auth'], function () {
 
-	Route::get('crearUsuario', function(){
+	Route::post('createUser', 'usuarioController@create');
+
+
+
+	Route::get('GoToCrearUsuario', function(){
 		return view('crearUsuario');
 	});
 });
