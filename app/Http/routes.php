@@ -19,10 +19,7 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('cerrarSesionAso', 'asociacionController@logOut');
 //Fin controlador asociación
 
-//Controlador Panel de Administración
-Route::get('homeAdminPanel/{id}', 'adminPanel@home');
 
-//FIn Controlador Panel de Administración
 Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('createUser', 'usuarioController@create');

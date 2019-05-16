@@ -20,23 +20,23 @@ if($asociacionId){
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" type="image/png" sizes="16x16" href="eliteAdmin/plugins/images/favicon.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/eliteAdmin/plugins/images/favicon.png">
 	<title>Voluntariado </title>
 	<!-- Bootstrap Core CSS -->
-	<link href="eliteAdmin/estilos/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="eliteAdmin/plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
+	<link href="/eliteAdmin/estilos/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/eliteAdmin/plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
 	<!-- Menu CSS -->
-	<link href="eliteAdmin/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+	<link href="/eliteAdmin/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
 	<!-- toast CSS -->
-	<link href="eliteAdmin/plugins/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
+	<link href="/eliteAdmin/plugins/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
 	<!-- morris CSS -->
-	<link href="eliteAdmin/plugins/bower_components/morrisjs/morris.css" rel="stylesheet">
+	<link href="/eliteAdmin/plugins/bower_components/morrisjs/morris.css" rel="stylesheet">
 	<!-- animation CSS -->
-	<link href="eliteAdmin/estilos/css/animate.css" rel="stylesheet">
+	<link href="/eliteAdmin/estilos/css/animate.css" rel="stylesheet">
 	<!-- Custom CSS -->
-	<link href="eliteAdmin/estilos/css/style.css" rel="stylesheet">
+	<link href="/eliteAdmin/estilos/css/style.css" rel="stylesheet">
 	<!-- color CSS -->
-	<link href="eliteAdmin/estilos/css/colors/default-dark.css" id="theme" rel="stylesheet">
+	<link href="/eliteAdmin/estilos/css/colors/default-dark.css" id="theme" rel="stylesheet">
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -197,36 +197,36 @@ if($asociacionId){
 
 
 		<!-- jQuery -->
-		<script src="eliteAdmin/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/jquery/dist/jquery.min.js"></script>
 		<!-- Bootstrap Core JavaScript -->
-		<script src="eliteAdmin/estilos/bootstrap/dist/js/tether.min.js"></script>
-		<script src="eliteAdmin/estilos/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script src="eliteAdmin/plugins/bower_components/bootstrap-extension/js/bootstrap-extension.min.js"></script>
+		<script src="/eliteAdmin/estilos/bootstrap/dist/js/tether.min.js"></script>
+		<script src="/eliteAdmin/estilos/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/bootstrap-extension/js/bootstrap-extension.min.js"></script>
 		<!-- Menu Plugin JavaScript -->
-		<script src="eliteAdmin/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
 		<!--slimscroll JavaScript -->
-		<script src="eliteAdmin/estilos/js/jquery.slimscroll.js"></script>
+		<script src="/eliteAdmin/estilos/js/jquery.slimscroll.js"></script>
 		<!--Wave Effects -->
-		<script src="eliteAdmin/estilos/js/waves.js"></script>
+		<script src="/eliteAdmin/estilos/js/waves.js"></script>
 		<!--Counter js -->
-		<script src="eliteAdmin/plugins/bower_components/waypoints/lib/jquery.waypoints.js"></script>
-		<script src="eliteAdmin/plugins/bower_components/counterup/jquery.counterup.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/waypoints/lib/jquery.waypoints.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/counterup/jquery.counterup.min.js"></script>
 		<!--Morris JavaScript -->
-		<script src="eliteAdmin/plugins/bower_components/raphael/raphael-min.js"></script>
-		<script src="eliteAdmin/plugins/bower_components/morrisjs/morris.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/raphael/raphael-min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/morrisjs/morris.js"></script>
 		<!-- Custom Theme JavaScript -->
-		<script src="eliteAdmin/estilos/js/custom.min.js"></script>
-		<script src="eliteAdmin/estilos/js/dashboard1.js"></script>
+		<script src="/eliteAdmin/estilos/js/custom.min.js"></script>
+		<script src="/eliteAdmin/estilos/js/dashboard1.js"></script>
 		<!-- Sparkline chart JavaScript -->
-		<script src="eliteAdmin/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-		<script src="eliteAdmin/plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js"></script>
-		<script src="eliteAdmin/plugins/bower_components/toast-master/js/jquery.toast.js"></script>
-		<script src="eliteAdmin/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-		<script src="eliteAdmin/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
-		<script src="eliteAdmin/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
-		<script src="eliteAdmin/plugins/bower_components/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
-		<script src="eliteAdmin/plugins/bower_components/moment/moment.js"></script>
-		<script src="eliteAdmin/estilos/js/custom.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/moment/moment.js"></script>
+		<script src="/eliteAdmin/estilos/js/custom.min.js"></script>
 		<script type="text/javascript">
 
 			$(document).ready(function() {

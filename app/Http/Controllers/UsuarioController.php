@@ -8,6 +8,8 @@ use Illuminate\Contracts\Auth\Authenticatable;
 
 use App\Http\Requests;
 use App\asociacion;
+use App\usuario;
+use DateTime;
 use Auth;
 use Input;
 use Image;
@@ -28,24 +30,28 @@ class UsuarioController extends Controller
 			'email'    	 	  => 'required',
 			'password'  	  => 'required',
 			'telefono'  	  => 'required',
-			//'avatar'		  =>  'image|mimes:jpg,jpeg,bmp,gif,png|max:'.Config::get('app.photo_max_size'),
+			'avatar'		  => 'image|mimes:jpg,jpeg,bmp,gif,png|max:'.Config::get('app.photo_max_size'),
 			'fechaNacimiento' => 'required'
 		]);
 
+		$avatar = Image::make($request->file('avatar'));
 
-		$avatar = Image::make($request->input('avatar'));
-
+		$time = strtotime($request->input('fechaNacimiento'),);
+		$fecha = date('Y-m-d',$time);
 
 		$usuario = new usuario(array(
 			'nombre' 		=> $request->input('name'),
 			'apellidos'		=> $request->input('apellidos'),
-			'edad'			=> $request->input('fechaNacimiento'),
+			'email'			=> $request->input('email'),
+			'edad'			=> $fecha,
 			'password'		=> $request->input('password'),
 			'telefono' 		=> $request->input('telefono'),
 			'id_asociacion' => $request->input('id'),
 		));
-		$rutaAvatar = Config::get('app.url_user_avatar').'user'.$usuario->id;
-		$avatar->save($ruta.$avatar->getClientOriginalExtension());
+
+		$nameAvatar = str_random(25).'.'.$request->file('avatar')->getClientOriginalExtension();
+		$ruta = Config::get('app.url_user_avatar').'/'.$nameAvatar;
+		$avatar->save($ruta,100);
 		$usuario->avatar = $ruta;
 
 		if($usuario->save()){
