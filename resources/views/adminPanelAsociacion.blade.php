@@ -37,6 +37,9 @@ if($asociacionId){
 	<link href="/eliteAdmin/estilos/css/style.css" rel="stylesheet">
 	<!-- color CSS -->
 	<link href="/eliteAdmin/estilos/css/colors/default-dark.css" id="theme" rel="stylesheet">
+
+	<link href="/eliteAdmin/plugins/bower_components/jquery-wizard-master/css/wizard.css" rel="stylesheet">
+
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -48,16 +51,16 @@ if($asociacionId){
 		i['GoogleAnalyticsObject'] = r;
 		i[r] = i[r] || function() {
 			(i[r].q = i[r].q || []).push(arguments)
-		}, i[r].l = 1 * new Date();
-		a = s.createElement(o),
-		m = s.getElementsByTagName(o)[0];
-		a.async = 1;
-		a.src = g;
-		m.parentNode.insertBefore(a, m)
-	})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+}, i[r].l = 1 * new Date();
+a = s.createElement(o),
+m = s.getElementsByTagName(o)[0];
+a.async = 1;
+a.src = g;
+m.parentNode.insertBefore(a, m)
+})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-	ga('create', 'UA-19175540-9', 'auto');
-	ga('send', 'pageview');
+ga('create', 'UA-19175540-9', 'auto');
+ga('send', 'pageview');
 </script>
 </head>
 
@@ -155,7 +158,7 @@ if($asociacionId){
 					<li> <a href="#" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Actividades<span class="fa arrow"></span> </span></a>
 						<ul class="nav nav-second-level">
 							<li> <a href="#">Gestionar Actividades</a> </li>
-							<li> <a href="#">Crear Actividad</a> </li>
+							<li> <a href="GotoCrearActividad">Crear Actividad</a> </li>
 						</ul>
 					</li>
 
@@ -225,39 +228,86 @@ if($asociacionId){
 		<script src="/eliteAdmin/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
 		<script src="/eliteAdmin/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
 		<script src="/eliteAdmin/plugins/bower_components/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+		<link rel="stylesheet" href="/eliteAdmin/plugins/bower_components/jquery-wizard-master/libs/formvalidation/formValidation.min.css">
+		<!-- FormValidation plugin and the class supports validating Bootstrap form -->
+		<script src="/eliteAdmin/plugins/bower_components/jquery-wizard-master/libs/formvalidation/formValidation.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/jquery-wizard-master/libs/formvalidation/bootstrap.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/jquery-wizard-master/dist/jquery-wizard.min.js"></script>
 		<script src="/eliteAdmin/plugins/bower_components/moment/moment.js"></script>
 		<script src="/eliteAdmin/estilos/js/custom.min.js"></script>
 		<script type="text/javascript">
 
 			$(document).ready(function() {
-				$.toast({
-					heading: 'Welcome to Elite admin',
-					text: 'Use the predefined ones, or specify a custom position object.',
-					position: 'top-right',
-					loaderBg: '#ff6849',
-					icon: 'info',
-					hideAfter: 3500,
 
-					stack: 6
-				})
-			});
+	if({{ $numUsuarios }} < 1){
+		$.toast({
+			heading: 'Bienvenido',
+			text: 'No olvides crear usuarios',
+			position: 'top-right',
+			loaderBg: '#ff6849',
+			icon: 'info',
+			hideAfter: 3500,
+
+			stack: 6
+		})
+	}
+
+});
 			//Datepicker jquery
 			jQuery('.mydatepicker, #datepicker').datepicker();
-			jQuery('#datepicker-autoclose').datepicker({
-				autoclose: true,
-				todayHighlight: true
-			});
-			jQuery('#date-range').datepicker({
-				toggleActive: true
-			});
-			jQuery('#datepicker-inline').datepicker({
+jQuery('#datepicker-autoclose').datepicker({
+	autoclose: true,
+	todayHighlight: true
+});
+jQuery('#date-range').datepicker({
+	toggleActive: true
+});
+jQuery('#datepicker-inline').datepicker({
 
-				todayHighlight: true
-			});
+	todayHighlight: true
+});
 			//Fin Datepicker Jquery
+			$('#accordion').wizard({
+	step: '[data-toggle="collapse"]',
 
-		</script>
-		<!--Style Switcher -->
-		<script src="eliteAdmin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
-	</body>
-	</html>
+	buttonsAppendTo: '.panel-collapse',
+
+	templates: {
+		buttons: function() {
+			var options = this.options;
+			return '<div class="panel-footer"><ul class="pager">' +
+			'<li class="previous">' +
+			'<a href="#' + this.id + '" data-wizard="back" role="button">' + options.buttonLabels.back + '</a>' +
+			'</li>' +
+			'<li class="next">' +
+			'<a href="#' + this.id + '" data-wizard="next" role="button">' + options.buttonLabels.next + '</a>' +
+			'<a href="#' + this.id + '" data-wizard="finish" role="button">' + options.buttonLabels.finish + '</a>' +
+			'</li>' +
+			'</ul></div>';
+		}
+	},
+
+	onBeforeShow: function(step) {
+		step.$pane.collapse('show');
+	},
+
+	onBeforeHide: function(step) {
+		step.$pane.collapse('hide');
+	},
+
+	onFinish: function() {
+		swal("Message Finish!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
+	}
+});
+$('#exampleBasic').wizard({
+	onFinish: function() {
+		swal("Message Finish!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
+	}
+});
+
+
+</script>
+<!--Style Switcher -->
+<script src="eliteAdmin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+</body>
+</html>

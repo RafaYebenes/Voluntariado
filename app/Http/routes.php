@@ -23,12 +23,17 @@ Route::get('cerrarSesionAso', 'asociacionController@logOut');
 Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('createUser', 'usuarioController@create');
-
-
-
 	Route::get('GoToCrearUsuario', function(){
 		return view('crearUsuario');
 	});
+
+
+	Route::get('GotoCrearActividad', function(){
+		return view('crearActividad');
+	});
+
+
+
 });
 
 
