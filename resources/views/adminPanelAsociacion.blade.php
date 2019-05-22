@@ -51,16 +51,16 @@ if($asociacionId){
 		i['GoogleAnalyticsObject'] = r;
 		i[r] = i[r] || function() {
 			(i[r].q = i[r].q || []).push(arguments)
-}, i[r].l = 1 * new Date();
-a = s.createElement(o),
-m = s.getElementsByTagName(o)[0];
-a.async = 1;
-a.src = g;
-m.parentNode.insertBefore(a, m)
-})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+		m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-ga('create', 'UA-19175540-9', 'auto');
-ga('send', 'pageview');
+	ga('create', 'UA-19175540-9', 'auto');
+	ga('send', 'pageview');
 </script>
 </head>
 
@@ -77,7 +77,7 @@ ga('send', 'pageview');
 		@section('navBar')
 		<nav class="navbar navbar-default navbar-static-top m-b-0">
 			<div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
-				<div class="top-left-part"><a class="logo" href="/"><b><!--This is dark logo icon--><img src="img/asociacionWhite.png" width="50%" height="50%" alt="home" class="dark-logo" /><!--This is light logo     icon--><img src="img/asociacionWhite.png" alt="home" class="light-logo" /></b><span class="hidden-xs">Voluntariado<!--This is light logo text--><img src="img/asociacionWhite.png" alt="home" class="light-logo" /></span></a></div>
+				<div class="top-left-part"><a class="logo" href="/"><b><!--This is dark logo icon--><img src="/img/asociacionWhite.png" width="50%" height="50%" alt="home" class="dark-logo" /><!--This is light logo     icon--><img src="/img/asociacionWhite.png" alt="home" class="light-logo" /></b><span class="hidden-xs">Voluntariado<!--This is light logo text--><img src="/img/asociacionWhite.png" alt="home" class="light-logo" /></span></a></div>
 				<ul class="nav navbar-top-links navbar-left hidden-xs">
 					<li><a href="#" class="open-close hidden-xs waves-effect waves-light"></a></li>
 					<li>
@@ -115,7 +115,7 @@ ga('send', 'pageview');
 			<div class="sidebar-nav navbar-collapse slimscrollsidebar">
 				<div class="user-profile">
 					<div class="dropdown user-pro-body">
-						<div><img src="eliteAdmin/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"></div>
+						<div><img src="/eliteAdmin/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"></div>
 
 						<a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ $asociacion->nombre }}<span class="caret"></span></a>
 						<ul class="dropdown-menu animated flipInY">
@@ -150,7 +150,7 @@ ga('send', 'pageview');
 							<span class="hide-menu"> Usuarios <span class="fa arrow"></span></span>
 						</a>
 						<ul class="nav nav-second-level">
-							<li> <a href="#">Gestionar Usuarios</a> </li>
+							<li> <a href="GestionarUsuarios">Gestionar Usuarios</a> </li>
 							<li> <a href="GoToCrearUsuario">Crear Usuarios</a> </li>
 						</ul>
 					</li>
@@ -239,75 +239,75 @@ ga('send', 'pageview');
 
 			$(document).ready(function() {
 
-	if({{ $numUsuarios }} < 1){
-		$.toast({
-			heading: 'Bienvenido',
-			text: 'No olvides crear usuarios',
-			position: 'top-right',
-			loaderBg: '#ff6849',
-			icon: 'info',
-			hideAfter: 3500,
+				if({{ $numUsuarios }} < 1){
+					$.toast({
+						heading: 'Bienvenido',
+						text: 'No olvides crear usuarios',
+						position: 'top-right',
+						loaderBg: '#ff6849',
+						icon: 'info',
+						hideAfter: 3500,
 
-			stack: 6
-		})
-	}
+						stack: 6
+					})
+				}
 
-});
+			});
 			//Datepicker jquery
 			jQuery('.mydatepicker, #datepicker').datepicker();
-jQuery('#datepicker-autoclose').datepicker({
-	autoclose: true,
-	todayHighlight: true
-});
-jQuery('#date-range').datepicker({
-	toggleActive: true
-});
-jQuery('#datepicker-inline').datepicker({
+			jQuery('#datepicker-autoclose').datepicker({
+				autoclose: true,
+				todayHighlight: true
+			});
+			jQuery('#date-range').datepicker({
+				toggleActive: true
+			});
+			jQuery('#datepicker-inline').datepicker({
 
-	todayHighlight: true
-});
+				todayHighlight: true
+			});
 			//Fin Datepicker Jquery
 			$('#accordion').wizard({
-	step: '[data-toggle="collapse"]',
+				step: '[data-toggle="collapse"]',
 
-	buttonsAppendTo: '.panel-collapse',
+				buttonsAppendTo: '.panel-collapse',
 
-	templates: {
-		buttons: function() {
-			var options = this.options;
-			return '<div class="panel-footer"><ul class="pager">' +
-			'<li class="previous">' +
-			'<a href="#' + this.id + '" data-wizard="back" role="button">' + options.buttonLabels.back + '</a>' +
-			'</li>' +
-			'<li class="next">' +
-			'<a href="#' + this.id + '" data-wizard="next" role="button">' + options.buttonLabels.next + '</a>' +
-			'<a href="#' + this.id + '" data-wizard="finish" role="button">' + options.buttonLabels.finish + '</a>' +
-			'</li>' +
-			'</ul></div>';
-		}
-	},
+				templates: {
+					buttons: function() {
+						var options = this.options;
+						return '<div class="panel-footer"><ul class="pager">' +
+						'<li class="previous">' +
+						'<a href="#' + this.id + '" data-wizard="back" role="button">' + options.buttonLabels.back + '</a>' +
+						'</li>' +
+						'<li class="next">' +
+						'<a href="#' + this.id + '" data-wizard="next" role="button">' + options.buttonLabels.next + '</a>' +
+						'<a href="#' + this.id + '" data-wizard="finish" role="button">' + options.buttonLabels.finish + '</a>' +
+						'</li>' +
+						'</ul></div>';
+					}
+				},
 
-	onBeforeShow: function(step) {
-		step.$pane.collapse('show');
-	},
+				onBeforeShow: function(step) {
+					step.$pane.collapse('show');
+				},
 
-	onBeforeHide: function(step) {
-		step.$pane.collapse('hide');
-	},
+				onBeforeHide: function(step) {
+					step.$pane.collapse('hide');
+				},
 
-	onFinish: function() {
-		swal("Message Finish!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
-	}
-});
-$('#exampleBasic').wizard({
-	onFinish: function() {
-		swal("Message Finish!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
-	}
-});
+				onFinish: function() {
+					swal("Message Finish!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
+				}
+			});
+			$('#exampleBasic').wizard({
+				onFinish: function() {
+					swal("Message Finish!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
+				}
+			});
 
 
-</script>
-<!--Style Switcher -->
-<script src="eliteAdmin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
-</body>
-</html>
+		</script>
+		<!--Style Switcher -->
+		<script src="eliteAdmin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+	</body>
+	</html>

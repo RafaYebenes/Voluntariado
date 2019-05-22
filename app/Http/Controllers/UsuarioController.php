@@ -51,6 +51,7 @@ class UsuarioController extends Controller
 
 		$nameAvatar = str_random(25).'.'.$request->file('avatar')->getClientOriginalExtension();
 		$ruta = Config::get('app.url_user_avatar').'/'.$nameAvatar;
+		$avatar->resize(200,200);
 		$avatar->save($ruta,100);
 		$usuario->avatar = $ruta;
 
