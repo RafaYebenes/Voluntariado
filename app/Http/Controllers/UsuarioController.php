@@ -61,4 +61,18 @@ class UsuarioController extends Controller
 			return  redirect('')->with('send', 'Fallo al añadir el usuario');
 		}
 	}
+
+	public function delete($id){
+
+		if (Auth::check()){
+			$usuario = usuario::where('id', $id)->get();
+			if ($usuario[0]) {
+				unlink($usuario[0]->avatar);
+
+				$usuario[0]->delete();
+			}
+		}
+		return Redirect::to('/');
+	}
+
 }

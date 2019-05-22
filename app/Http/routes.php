@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('GestionarUsuarios', function(){
 		return view('gestionarUsuarios');
 	});
+	Route::get('EliminarUsuario/{id}', 'usuarioController@delete');
 
 	Route::get('GotoCrearActividad', function(){
 		return view('crearActividad');

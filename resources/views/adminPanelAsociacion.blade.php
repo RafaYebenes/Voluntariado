@@ -151,8 +151,8 @@ if($asociacionId){
 							<span class="hide-menu"> Usuarios <span class="fa arrow"></span></span>
 						</a>
 						<ul class="nav nav-second-level">
-							<li> <a href="GestionarUsuarios">Gestionar Usuarios</a> </li>
-							<li> <a href="GoToCrearUsuario">Crear Usuarios</a> </li>
+							<li> <a href="/GestionarUsuarios">Gestionar Usuarios</a> </li>
+							<li> <a href="/GoToCrearUsuario">Crear Usuarios</a> </li>
 						</ul>
 					</li>
 

@@ -38,6 +38,7 @@ if($asociacionId){
 							<div class="el-overlay">
 								<ul class="el-info">
 									<li><a class="btn default btn-outline" href="PerfilUsuario/{{ $element->id }}" data-toggle="tooltip" data-placement="top" title="Perfil"><i class="fa fa-user"></i></a></li>
+									<li><a class="btn default btn-outline" href="EliminarUsuario/{{ $element->id }}" data-toggle="tooltip" data-placement="top" title="Eliminar Usuario"><i class="fa fa-trash"></i></a></li>
 								</ul>
 							</div>
 						</div>
