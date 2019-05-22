@@ -39,6 +39,7 @@ if($asociacionId){
 	<link href="/eliteAdmin/estilos/css/colors/default-dark.css" id="theme" rel="stylesheet">
 
 	<link href="/eliteAdmin/plugins/bower_components/jquery-wizard-master/css/wizard.css" rel="stylesheet">
+	<link href="/eliteAdmin/plugins/bower_components/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,16 +52,16 @@ if($asociacionId){
 		i['GoogleAnalyticsObject'] = r;
 		i[r] = i[r] || function() {
 			(i[r].q = i[r].q || []).push(arguments)
-}, i[r].l = 1 * new Date();
-a = s.createElement(o),
-m = s.getElementsByTagName(o)[0];
-a.async = 1;
-a.src = g;
-m.parentNode.insertBefore(a, m)
-})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+		m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-ga('create', 'UA-19175540-9', 'auto');
-ga('send', 'pageview');
+	ga('create', 'UA-19175540-9', 'auto');
+	ga('send', 'pageview');
 </script>
 </head>
 
@@ -235,79 +236,149 @@ ga('send', 'pageview');
 		<script src="/eliteAdmin/plugins/bower_components/jquery-wizard-master/dist/jquery-wizard.min.js"></script>
 		<script src="/eliteAdmin/plugins/bower_components/moment/moment.js"></script>
 		<script src="/eliteAdmin/estilos/js/custom.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.js"></script>
+
 		<script type="text/javascript">
 
 			$(document).ready(function() {
 
-	if({{ $numUsuarios }} < 1){
-		$.toast({
-			heading: 'Bienvenido',
-			text: 'No olvides crear usuarios',
-			position: 'top-right',
-			loaderBg: '#ff6849',
-			icon: 'info',
-			hideAfter: 3500,
+				if({{ $numUsuarios }} < 1){
+					$.toast({
+						heading: 'Bienvenido',
+						text: 'No olvides crear usuarios',
+						position: 'top-right',
+						loaderBg: '#ff6849',
+						icon: 'info',
+						hideAfter: 3500,
 
-			stack: 6
-		})
-	}
+						stack: 6
+					})
+				}
 
-});
+			});
 			//Datepicker jquery
 			jQuery('.mydatepicker, #datepicker').datepicker();
-jQuery('#datepicker-autoclose').datepicker({
-	autoclose: true,
-	todayHighlight: true
-});
-jQuery('#date-range').datepicker({
-	toggleActive: true
-});
-jQuery('#datepicker-inline').datepicker({
+			jQuery('#datepicker-autoclose').datepicker({
+				autoclose: true,
+				todayHighlight: true
+			});
+			jQuery('#date-range').datepicker({
+				toggleActive: true
+			});
+			jQuery('#datepicker-inline').datepicker({
 
-	todayHighlight: true
-});
+				todayHighlight: true
+			});
 			//Fin Datepicker Jquery
 			$('#accordion').wizard({
-	step: '[data-toggle="collapse"]',
+				step: '[data-toggle="collapse"]',
 
-	buttonsAppendTo: '.panel-collapse',
+				buttonsAppendTo: '.panel-collapse',
 
-	templates: {
-		buttons: function() {
-			var options = this.options;
-			return '<div class="panel-footer"><ul class="pager">' +
-			'<li class="previous">' +
-			'<a href="#' + this.id + '" data-wizard="back" role="button">' + options.buttonLabels.back + '</a>' +
-			'</li>' +
-			'<li class="next">' +
-			'<a href="#' + this.id + '" data-wizard="next" role="button">' + options.buttonLabels.next + '</a>' +
-			'<a href="#' + this.id + '" data-wizard="finish" role="button">' + options.buttonLabels.finish + '</a>' +
-			'</li>' +
-			'</ul></div>';
-		}
-	},
+				templates: {
+					buttons: function() {
+						var options = this.options;
+						return '<div class="panel-footer"><ul class="pager">' +
+						'<li class="previous">' +
+						'<a href="#' + this.id + '" data-wizard="back" role="button">' + options.buttonLabels.back + '</a>' +
+						'</li>' +
+						'<li class="next">' +
+						'<a href="#' + this.id + '" data-wizard="next" role="button">' + options.buttonLabels.next + '</a>' +
+						'<a href="#' + this.id + '" data-wizard="finish" role="button">' + options.buttonLabels.finish + '</a>' +
+						'</li>' +
+						'</ul></div>';
+					}
+				},
 
-	onBeforeShow: function(step) {
-		step.$pane.collapse('show');
-	},
+				onBeforeShow: function(step) {
+					step.$pane.collapse('show');
+				},
 
-	onBeforeHide: function(step) {
-		step.$pane.collapse('hide');
-	},
+				onBeforeHide: function(step) {
+					step.$pane.collapse('hide');
+				},
 
-	onFinish: function() {
-		swal("Message Finish!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
-	}
-});
-$('#exampleBasic').wizard({
-	onFinish: function() {
-		swal("Message Finish!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
-	}
-});
+				onFinish: function() {
+					swal("Message Finish!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
+				}
+			});
 
+			$('#exampleBasic').wizard({
+				onFinish: function() {
+					swal("Message Finish!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
+				}
+			});
+			 // For multiselect
 
-</script>
-<!--Style Switcher -->
-<script src="eliteAdmin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
-</body>
-</html>
+			 $('#pre-selected-options').multiSelect();
+			 $('#optgroup').multiSelect({
+			 	selectableOptgroup: true
+			 });
+
+			 $('#public-methods').multiSelect();
+			 $('#select-all').click(function() {
+			 	$('#public-methods').multiSelect('select_all');
+			 	return false;
+			 });
+			 $('#deselect-all').click(function() {
+			 	$('#public-methods').multiSelect('deselect_all');
+			 	return false;
+			 });
+			 $('#refresh').on('click', function() {
+			 	$('#public-methods').multiSelect('refresh');
+			 	return false;
+			 });
+			 $('#add-option').on('click', function() {
+			 	$('#public-methods').multiSelect('addOption', {
+			 		value: 42,
+			 		text: 'test 42',
+			 		index: 0
+			 	});
+			 	return false;
+			 });
+
+			  //Bootstrap-TouchSpin
+			  $(".vertical-spin").TouchSpin({
+			  	verticalbuttons: true,
+			  	verticalupclass: 'ti-plus',
+			  	verticaldownclass: 'ti-minus'
+			  });
+			  var vspinTrue = $(".vertical-spin").TouchSpin({
+			  	verticalbuttons: true
+			  });
+			  if (vspinTrue) {
+			  	$('.vertical-spin').prev('.bootstrap-touchspin-prefix').remove();
+			  }
+
+			  $("input[name='tch1']").TouchSpin({
+			  	min: 0,
+			  	max: 100,
+			  	step: 0.1,
+			  	decimals: 2,
+			  	boostat: 5,
+			  	maxboostedstep: 10,
+			  	postfix: '%'
+			  });
+			  $("input[name='tch2']").TouchSpin({
+			  	min: -1000000000,
+			  	max: 1000000000,
+			  	stepinterval: 50,
+			  	maxboostedstep: 10000000,
+			  	prefix: '$'
+			  });
+			  $("input[name='tch3']").TouchSpin();
+
+			  $("input[name='tch3_22']").TouchSpin({
+			  	initval: 40
+			  });
+
+			  $("input[name='tch5']").TouchSpin({
+			  	prefix: "pre",
+			  	postfix: "post"
+			  });
+
+			</script>
+			<!--Style Switcher -->
+			<script src="eliteAdmin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+		</body>
+		</html>
