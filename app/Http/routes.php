@@ -26,13 +26,17 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('GoToCrearUsuario', function(){
 		return view('crearUsuario');
 	});
-
+	Route::get('GestionarUsuarios', function(){
+		return view('gestionarUsuarios');
+	});
 
 	Route::get('GotoCrearActividad', function(){
 		return view('crearActividad');
 	});
 
-
+	Route::get('PerfilUsuario/{id}', function ($id){
+		return view('perfilUsuario')->with("id",$id);
+	});
 
 });
 
