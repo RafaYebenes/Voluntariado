@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('gestionarUsuarios');
 	});
 	Route::get('EliminarUsuario/{id}', 'usuarioController@delete');
+	Route::post('UpdateUser', 'usuarioController@update');
 
 	Route::get('GotoCrearActividad', function(){
 		return view('crearActividad');

@@ -121,7 +121,6 @@ if($asociacionId){
 						<a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ $asociacion->nombre }}<span class="caret"></span></a>
 						<ul class="dropdown-menu animated flipInY">
 							<li><a href="#"><i class="ti-user"></i> Perfil</a></li>
-							<li><a href="#"><i class="ti-email"></i> Mensajes</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a href="#"><i class="ti-settings"></i> Ajustes de Cuenta</a></li>
 							<li role="separator" class="divider"></li>
@@ -147,7 +146,7 @@ if($asociacionId){
 					</li>
 					<li>
 
-						<a href="index.html" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i>
+						<a href="index.html" class="waves-effect "><i class="linea-icon linea-basic fa fa-group" ></i>
 							<span class="hide-menu"> Usuarios <span class="fa arrow"></span></span>
 						</a>
 						<ul class="nav nav-second-level">
@@ -156,7 +155,7 @@ if($asociacionId){
 						</ul>
 					</li>
 
-					<li> <a href="#" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Actividades<span class="fa arrow"></span> </span></a>
+					<li> <a href="#" class="waves-effect"><i data-icon="v" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Actividades<span class="fa arrow"></span> </span></a>
 						<ul class="nav nav-second-level">
 							<li> <a href="#">Gestionar Actividades</a> </li>
 							<li> <a href="GotoCrearActividad">Crear Actividad</a> </li>
