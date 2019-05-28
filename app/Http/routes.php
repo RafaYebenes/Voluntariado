@@ -11,14 +11,14 @@
 |
 */
 
-//Controlador asociación
+/**
+ * Rutas Asociación
+ */
 
 Route::post('createAsociacion', 'asociacionController@create');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
-//Route::post('loginAsociacion', 'asociacionController@login');
-Route::get('cerrarSesionAso', 'asociacionController@logOut');
-//Fin controlador asociación
 
+Route::get('cerrarSesionAso', 'asociacionController@logOut');
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -42,15 +42,36 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
-
 Route::get('loginAso',function(){
 	return view('auth/loginAso');
 });
 
+/**
+ * Fin Rutas Asociación
+ */
+
+/**
+ * Rutas Voluntarios
+ */
 Route::get('loginVoluntario',function(){
 	return view('loginVoluntario');
 });
+Route::post('createVoluntario', 'voluntarioController@create');
+Route::get('baseVoluntarios', function(){
+	return view('baseVoluntarios');
+});
+/**
+ * Fin Rutas Voluntarios
+ */
 
+/**
+ * Rutas Usuario
+ */
+Route::post('loginUser', 'usuarioController@login');
+Route::get('logoutUser', 'usuarioController@logout');
+/**
+ * Fin Rutas Usuario
+ */
 
 Route::get('/', function () {
 	return Auth::check()? view('contenidoPanelAdmin') : view('welcome');

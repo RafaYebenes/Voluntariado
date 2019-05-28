@@ -44,7 +44,7 @@ class UsuarioController extends Controller
 			'apellidos'		=> $request->input('apellidos'),
 			'email'			=> $request->input('email'),
 			'edad'			=> $fecha,
-			'password'		=> $request->input('password'),
+			'password'		=> bcrypt($request->input('password')),
 			'telefono' 		=> $request->input('telefono'),
 			'id_asociacion' => $request->input('id'),
 		));
@@ -96,5 +96,32 @@ class UsuarioController extends Controller
 		}else{
 			return  redirect('/PerfilUsuario/'.$usuario->id)->with('send', 'Fallo al actualizar el usuario');
 		}
+	}
+
+	public function login(Request $request){
+
+
+		$this->validate($request, [
+			'email'    => 'required',
+			'password' => 'required',
+		]);
+		$email = $request->input('email');
+
+		$usuarios = usuario::where('email', $email)->get();
+		if(sizeof($usuarios) == 0){
+			return redirect('/')->with('send', 'El email usado no existe');
+		}
+		$usuario = $usuarios[0];
+
+		if(password_verify($request->input('password'), $usuario->password)){
+			return view('inicioUsuario')->with('id', $usuario->id);
+		}else{
+			return redirect('/')->with('send', 'Contraseña incorrecta');
+		}
+	}
+
+	public function logout(){
+		Auth::logout();
+		return Redirect::to('/');
 	}
 }

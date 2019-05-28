@@ -20,6 +20,7 @@ return [
      * Rutas para fotos
      */
     'url_user_avatar' => 'uploads/usersAvatar',
+    'url_voluntarios_avatar' => 'uploads/voluntariosAvatar',
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

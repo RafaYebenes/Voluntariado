@@ -120,11 +120,9 @@ if($asociacionId){
 
 						<a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ $asociacion->nombre }}<span class="caret"></span></a>
 						<ul class="dropdown-menu animated flipInY">
-							<li><a href="#"><i class="ti-user"></i> Perfil</a></li>
-							<li role="separator" class="divider"></li>
 							<li><a href="#"><i class="ti-settings"></i> Ajustes de Cuenta</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="cerrarSesionAso"><i class="fa fa-power-off"></i> Salir</a></li>
+							<li><a href="/cerrarSesionAso"><i class="fa fa-power-off"></i> Salir</a></li>
 						</ul>
 					</div>
 				</div>
@@ -158,7 +156,7 @@ if($asociacionId){
 					<li> <a href="#" class="waves-effect"><i data-icon="v" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Actividades<span class="fa arrow"></span> </span></a>
 						<ul class="nav nav-second-level">
 							<li> <a href="#">Gestionar Actividades</a> </li>
-							<li> <a href="GotoCrearActividad">Crear Actividad</a> </li>
+							<li> <a href="../GotoCrearActividad">Crear Actividad</a> </li>
 						</ul>
 					</li>
 
@@ -236,6 +234,8 @@ if($asociacionId){
 		<script src="/eliteAdmin/plugins/bower_components/moment/moment.js"></script>
 		<script src="/eliteAdmin/estilos/js/custom.min.js"></script>
 		<script src="/eliteAdmin/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/sweetalert/sweetalert.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script>
 
 		<script type="text/javascript">
 
