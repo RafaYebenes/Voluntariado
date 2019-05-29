@@ -66,4 +66,28 @@ class voluntarioController extends Controller
 			return  redirect('')->with('send', 'Fallo al añadir el voluntario');
 		}
 	}
+
+	public function login(Request $request){
+		$this->validate($request, [
+			'email'    => 'required',
+			'password' => 'required',
+		]);
+		$email = $request->input('email');
+
+		$voluntarios = voluntario::where('email', $email)->get();
+		if(sizeof($voluntarios) == 0){
+			return redirect('/')->with('send', 'El email usado no existe');
+		}
+		$voluntario = $voluntarios[0];
+
+		if(password_verify($request->input('password'), $voluntario->password)){
+			return view('/baseVoluntarios')->with('id', $voluntario->id);
+		}else{
+			return redirect('/')->with('send', 'Contraseña incorrecta');
+		}
+	}
+	public function logout(){
+		Auth::logout();
+		return Redirect::to('/');
+	}
 }

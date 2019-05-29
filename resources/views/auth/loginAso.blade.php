@@ -150,7 +150,7 @@
                 </form>
                 <!--Fin Formulario Inicio Sesión-->
                 <!--Cominezo Formulario Registro-->
-                <form class="slideDown" id="formRegistro" action="createAsociacion" method="post">
+                <form class="slideDown" id="formRegistro" action="createAsociacion" method="post" enctype="multipart/form-data" files=true >
                    {!! csrf_field() !!}
                    <div class="col-md-12">
                     <img src="img/asociacion.png"  height="150px" width="150px" >
@@ -168,7 +168,9 @@
                     <div class="col-md-4">
                         <input type="text" name="web" placeholder="Página Web *" required>
                     </div>
-
+                    <div class="col-md-12">
+                        <input type="file" name="avatar" placeholder="Imagen" required>
+                    </div>
                     <div class="col-md-4">
                         <input type="text" name="pais" placeholder="Pais *" required>
                     </div>

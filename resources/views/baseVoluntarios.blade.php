@@ -14,7 +14,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/eliteAdmin/plugins/images/favicon.png">
-    <title>Elite Admin Template - The Ultimate Multipurpose admin template</title>
+    <title>Voluntariado.cloud - Area de Voluntarios</title>
     <!-- Bootstrap Core CSS -->
     <link href="/eliteAdmin/estilos/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/eliteAdmin/plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
@@ -52,7 +52,15 @@
     ga('send', 'pageview');
 </script>
 </head>
+<?php
+use App\asociacion;
+use App\usuario;
+use App\oferta;
+use App\UsuariosParticipantes;
+use App\VoluntariosParticipantes;
 
+$ofertas = oferta::orderBy('created_at','desc')->get();
+?>
 <body >
     <!-- Preloader -->
     <div class="preloader">
@@ -70,7 +78,7 @@
                 <ul class="nav navbar-top-links navbar-left hidden-xs">
                     <a class="logo" href="index.html">
                         <b>
-                            <!--This is dark logo icon--><img src="/eliteAdmin/plugins/images/eliteadmin-logo.png" alt="home" class="dark-logo" />
+                            <!--This is dark logo icon--><img src="/img/iconos/UsersWhite.png" alt="home" class="dark-logo" with="40%" height="40%" />
                         </b>
                     </a>
 
@@ -117,8 +125,32 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-                            <h3 class="box-title">Blank Starter page</h3>
+                            <h3 class="box-title">Proximas Actividades</h3>
 
+                            <div class="row">
+                                @foreach ($ofertas as $element)
+                                <?php
+                                $id = $element->id_asociacion;
+                                $aso = asociacion::find($id);
+                                $fechaSinForma = $element->fecha;
+                                $usuApuntados = UsuariosParticipantes::where('id_oferta', $element->id)->count();
+                                $fecha = date('d-m-Y', strtotime($fechaSinForma));
+                                $descripcion = str_split($element->descripcion, 66);
+                                ?>
+                                <div class="col-md-2">
+                                    <div class="card">
+                                        <img class="card-img-top image-responsive" src="{{ $aso->avatar }}"  alt="Card image cap">
+
+                                        <div class="card-block">
+                                            <h4 class="card-title">{{ $element->nombre }} </h4>
+                                            <p class="card-text">{{$descripcion[0].'...' }}</p>
+                                            <p class="card-text"><i class="fa fa-calendar"></i> {{ $fecha}}  <i class="fa fa-map-marker"></i> {{ $element->lugar }}  <i class="fa fa-users" data-toggle="tooltip" data-placement="top" title="Voluntarios Necesarios"></i>{{ $element->voluntarios_necesarios }} <i class="fa fa-wheelchair" data-toggle="tooltip" data-placement="top" title="Usuarios Apuntados"></i>{{ $usuApuntados }} </p>
+                                            <a href="#" class="btn btn-primary">Ver Actividad</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -133,7 +165,7 @@
                                     <a href="javascript:void(0)"><i class="fa fa-user"></i><span>  Perfil</span></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"><i class="fa  fa-power-off"></i><span>  Logout</span></a>
+                                    <a href="/logoutVol"><i class="fa  fa-power-off"></i><span>  Logout</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -142,8 +174,9 @@
                 <!-- /.right-sidebar -->
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2017 &copy; Elite Admin brought to you by themedesigner.in </footer>
+            <footer class="footer text-center"> 2019 &copy; Creado por Rafael Yébenes Rivera </footer>
         </div>
+
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->

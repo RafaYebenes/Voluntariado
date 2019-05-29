@@ -110,7 +110,7 @@ $actividadesParticipadas = UsuariosParticipantes::where('id_usuario', $id)->get(
 
 
 						<div class="tab-pane active" id="settings">
-							<form class="form-horizontal form-material" action="/UpdateUser" enctype="multipart/form-data" method="post">
+							<form class="form-horizontal form-material " action="/UpdateUser" enctype="multipart/form-data" method="post">
 								{!! csrf_field() !!}
 								<input type="hidden" name="id" value="{{ $usuario[0]->id }}">
 								<div class="form-group">

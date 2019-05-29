@@ -35,9 +35,18 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('GotoCrearActividad', function(){
 		return view('crearActividad');
 	});
-
+	Route::get('GestionarActividades', function (){
+		return view('gestionarActividades');
+	});
+	Route::get('AjustesCuentaAso', function (){
+		return view('AjustesCuentaAso');
+	});
+	Route::post('updateAso', 'asociacionController@update');
 	Route::get('PerfilUsuario/{id}', function ($id){
 		return view('perfilUsuario')->with("id",$id);
+	});
+	Route::get('vistaActividad/{id}', function($id){
+		return view('vistaActividad')->with("id",$id);
 	});
 
 });
@@ -57,6 +66,8 @@ Route::get('loginVoluntario',function(){
 	return view('loginVoluntario');
 });
 Route::post('createVoluntario', 'voluntarioController@create');
+Route::post('loginVoluntario', 'voluntarioController@login');
+Route::get('logoutVol', 'voluntarioController@logout');
 Route::get('baseVoluntarios', function(){
 	return view('baseVoluntarios');
 });
