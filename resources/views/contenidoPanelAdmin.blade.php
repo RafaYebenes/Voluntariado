@@ -122,118 +122,113 @@ if($asociacionId){
 			<div class="col-md-12 col-lg-8 col-sm-12">
 				<div class="white-box">
 					<h3 class="box-title">Proximas Actividades</h3>
-                        <!--Esta sección estara formada por las proximas 5 actividades, traeremos los datos con una consulta que obtendrá 5 activiades order by fecha desc.
-                            Mostrara el titulo, la fecha, el lugar, el numero de voluntarios necesarios y los voluntarios que hay apuntados.
-                            Para esto ultimo realizaremos una consulta a la tabla voluntarios participantes, filtarndo por id y contaremos todos los id de los voluntarios que coincidan con el id de la actividad
-                            Tambien contaremos el numero de usuarios que participan del mismo modo que contamos los participantes.
-                        -->
-                        <?php
-                        $ofertas = oferta::where('id_asociacion',$asociacionId)->orderBy('created_at','desc')->take(5)->get();
-
-                        ?>
-                        <div class="table-responsive">
-                        	<table class="table ">
-                        		<thead>
-                        			<tr>
-                        				<th>Nombre Actividad</th>
-                        				<th>Fecha</th>
-                        				<th>Lugar</th>
-                        				<th>Voluntarios Necesarios</th>
-                        				<th>Voluntarios Apuntados</th>
-                        				<th>Nº de Participantes</th>
-                        			</tr>
-                        		</thead>
-
-                                {{-- expr --}}
-
-                                <tbody>
-                                    @if(sizeof($ofertas) == 0)
-                                    <td>No has creado ninguna actividad aun</td>
-                                    @else
-                                    @foreach ($ofertas as $key)
-                                    <?php
-                                    $volApuntados = VoluntariosParticipantes::where('id_oferta',$key->id)->count();
-                                    $usuApuntados = UsuariosParticipantes::where('id_oferta', $key->id)->count();
-                                    ?>
-                                    <tr>
-                                        <td class="txt-oflo">{{ $key->nombre }}</td>
-                                        <td class="txt-oflo">{{ $key->fecha  }}</td>
-                                        <td class="txt-oflo">{{ $key->lugar  }}</td>
-                                        <td class="txt-oflo">{{ $key->voluntarios_necesarios }}</td>
-                                        <td class="txt-oflo">{{ $volApuntados }}</td>
-                                        <td class="txt-oflo">{{ $usuApuntados }}</td>
-                                    </tr>
-                                    @endforeach
-                                    @endif
-                                </tbody>
-
-                            </table>
-                            <a href="#">Comprueba todas las actividades</a> </div>
-                        </div>
-                    </div>
                     <?php
-                    $ultimosUsuarios = usuario::Where('id_asociacion',$asociacionId)->orderBy('created_at','desc')->take(5)->get();
+                    $ofertas = oferta::where('id_asociacion',$asociacionId)->orderBy('created_at','desc')->take(5)->get();
+
                     ?>
-                    <div class="col-md-12 col-lg-4 col-sm-12">
-                       <div class="white-box">
-                        <h3 class="box-title">Ultimos Usuarios </h3>
-                        <div class="comment-center">
-                            @if(sizeof($ultimosUsuarios) == 0)
-                            <div class="comment-body">
+                    <div class="table-responsive">
+                     <table class="table ">
+                      <thead>
+                       <tr>
+                        <th>Nombre Actividad</th>
+                        <th>Fecha</th>
+                        <th>Lugar</th>
+                        <th>Voluntarios Necesarios</th>
+                        <th>Voluntarios Apuntados</th>
+                        <th>Nº de Participantes</th>
+                    </tr>
+                </thead>
 
-                                <div class="mail-contnet">
-                                 <h5>Todavia no has creado ningun usuario</h5>
-                                 <br>
+                {{-- expr --}}
 
-                             </div>
-                         </div>
-                         @else
-                         @foreach ($ultimosUsuarios as $element)
-                         {{-- expr --}}
-                         <a href="PerfilUsuario/{{ $element->id }}">
-                             <div class="comment-body">
-                                <div class="user-img"> <img src="{{ $element->avatar }}" alt="user" class="img-circle"></div>
-                                <div class="mail-contnet">
-                                   <h5>{{ $element->nombre.' '.$element->apellidos}}</h5>
-                                   <br>
-                                   <span class="label label-rounded label-success">Fecha de Creación {{ $element->created_at }}</span>
-                               </div>
-                           </div>
-                       </a>
-                       @endforeach
-                       @endif
+                <tbody>
+                    @if(sizeof($ofertas) == 0)
+                    <td>No has creado ninguna actividad aun</td>
+                    @else
+                    @foreach ($ofertas as $key)
+                    <?php
+                    $volApuntados = VoluntariosParticipantes::where('id_oferta',$key->id)->count();
+                    $usuApuntados = UsuariosParticipantes::where('id_oferta', $key->id)->count();
+                    ?>
+                    <tr>
+                        <td class="txt-oflo">{{ $key->nombre }}</td>
+                        <td class="txt-oflo">{{ $key->fecha  }}</td>
+                        <td class="txt-oflo">{{ $key->lugar  }}</td>
+                        <td class="txt-oflo">{{ $key->voluntarios_necesarios }}</td>
+                        <td class="txt-oflo">{{ $volApuntados }}</td>
+                        <td class="txt-oflo">{{ $usuApuntados }}</td>
+                    </tr>
+                    @endforeach
+                    @endif
+                </tbody>
 
-                   </div>
+            </table>
+            <a href="/GestionarActividades">Comprueba todas las actividades</a> </div>
+        </div>
+    </div>
+    <?php
+    $ultimosUsuarios = usuario::Where('id_asociacion',$asociacionId)->orderBy('created_at','desc')->take(5)->get();
+    ?>
+    <div class="col-md-12 col-lg-4 col-sm-12">
+     <div class="white-box">
+        <h3 class="box-title">Ultimos Usuarios </h3>
+        <div class="comment-center">
+            @if(sizeof($ultimosUsuarios) == 0)
+            <div class="comment-body">
+
+                <div class="mail-contnet">
+                   <h5>Todavia no has creado ningun usuario</h5>
                    <br>
-                   <a href="GestionarUsuarios"> <span class="label label-rounded label-info">Todos</span></a>
-                   <!-- /.row -->
-                   <!-- .right-sidebar -->
-                   <div class="right-sidebar">
-                       <div class="slimscrollright">
-                        <div class="rpanel-title"> Panel de Ajustes <span><i class="ti-close right-side-toggle"></i></span> </div>
-                        <div class="r-panel-body">
-                         <ul>
-                          <li><b>Opciones de Visualización</b></li>
-                          <li>
-                           <div class="checkbox checkbox-info">
-                            <input id="checkbox1" type="checkbox" class="fxhdr">
-                            <label for="checkbox1"> Fijar Barra de Navegación </label>
-                        </div>
-                    </li>
-                    <li>
-                       <div class="checkbox checkbox-success">
-                        <input id="checkbox4" type="checkbox" class="open-close">
-                        <label for="checkbox4"> Mostar Solo Iconos </label>
-                    </div>
-                </li>
-                <li>
-                   <div class="checkbox checkbox-warning">
-                    <input id="checkbox2" type="checkbox" class="fxsdr">
-                    <label for="checkbox2"> Fijar Barra Lateral </label>
+
+               </div>
+           </div>
+           @else
+           @foreach ($ultimosUsuarios as $element)
+           {{-- expr --}}
+           <a href="PerfilUsuario/{{ $element->id }}">
+               <div class="comment-body">
+                <div class="user-img"> <img src="{{ $element->avatar }}" alt="user" class="img-circle"></div>
+                <div class="mail-contnet">
+                 <h5>{{ $element->nombre.' '.$element->apellidos}}</h5>
+                 <br>
+                 <span class="label label-rounded label-success">Fecha de Creación {{ $element->created_at }}</span>
+             </div>
+         </div>
+     </a>
+     @endforeach
+     @endif
+
+ </div>
+ <br>
+ <a href="GestionarUsuarios"> <span class="label label-rounded label-info">Todos</span></a>
+ <!-- /.row -->
+ <!-- .right-sidebar -->
+ <div class="right-sidebar">
+     <div class="slimscrollright">
+        <div class="rpanel-title"> Panel de Ajustes <span><i class="ti-close right-side-toggle"></i></span> </div>
+        <div class="r-panel-body">
+           <ul>
+              <li><b>Opciones de Visualización</b></li>
+              <li>
+                 <div class="checkbox checkbox-info">
+                    <input id="checkbox1" type="checkbox" class="fxhdr">
+                    <label for="checkbox1"> Fijar Barra de Navegación </label>
                 </div>
             </li>
-        </ul>
-    </div>
+            <li>
+             <div class="checkbox checkbox-success">
+                <input id="checkbox4" type="checkbox" class="open-close">
+                <label for="checkbox4"> Mostar Solo Iconos </label>
+            </div>
+        </li>
+        <li>
+         <div class="checkbox checkbox-warning">
+            <input id="checkbox2" type="checkbox" class="fxsdr">
+            <label for="checkbox2"> Fijar Barra Lateral </label>
+        </div>
+    </li>
+</ul>
+</div>
 </div>
 </div>
 <!-- /.right-sidebar -->

@@ -122,7 +122,7 @@
                 <div class="col-md-7 col-lg-5">
 
                     <!--Formulario Inicio Sesión-->
-                    <form class="slideUp" id="formLogin" action="loginAsociacion" method="post">
+                    <form class="slideUp" id="formLogin" action="/loginVoluntario" method="post">
                      {!! csrf_field() !!}
                      <div class="col-md-12">
                         <img src="img/iconos/multiUsers.png"  height="150px" width="150px" >
@@ -150,7 +150,7 @@
                 </form>
                 <!--Fin Formulario Inicio Sesión-->
                 <!--Cominezo Formulario Registro-->
-                <form class="slideDown" id="formRegistro" action="createAsociacion" method="post">
+                <form class="slideDown" id="formRegistro" action="createVoluntario" enctype="multipart/form-data" files=true  method="post">
                    {!! csrf_field() !!}
                    <div class="col-md-12">
                     <img src="img/iconos/multiUsers.png"  height="130px" width="130px" >
@@ -165,11 +165,10 @@
                         <input type="text" name="apellidos" placeholder="Apellidos *" required>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" name="edad" placeholder="dd/mm/yyyy"  data-toggle="tooltip" data-placement="top" title="Edad" required>
+                        <input type="text" name="fechaNacimiento" placeholder="dd/mm/yyyy"  data-toggle="tooltip" data-placement="top" title="Edad" required>
                     </div>
                     <div class="col-md-12">
                         <input required type="file" value="" class="form-control" name="avatar" data-toggle="tooltip" data-placement="top" title="Imagen de Perfil" >
-
                     </div>
                     <div class="col-md-6">
                         <input type="text" name="pais" placeholder="Pais *" required id="Elemento">
@@ -189,26 +188,23 @@
                     <div class="col-md-6">
                         <input type="text" name="telefono" placeholder="Telefono *"  id="Elemento" required>
                     </div>
-
                     <div class="col-md-12" id="Elemento">
                         <input type="text" placeholder="Email *" name="email" required/>
                         <input type="password" placeholder="Contraseña *"  name="password" required/>
                     </div>
 
                     <div class="col-md-6">
-                     <button type="submit" class=" btn btn-primary type--uppercase btn-lg btn-block " > Registro  </button>
-                 </div>
-                 <div class="col-md-6">
-
-                    <button type="button" class="btn btn-warning type--uppercase  btn-block" id="btnVolver">Volver</button>
-
+                        <button type="submit" class=" btn btn-primary type--uppercase btn-lg btn-block " > Registro  </button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-warning type--uppercase  btn-block" id="btnVolver">Volver</button>
+                    </div>
                 </div>
-            </div>
-        </form>
-        <!--Fin Formulario Registro-->
+            </form>
+            <!--Fin Formulario Registro-->
+        </div>
     </div>
-</div>
-<!--end of row-->
+    <!--end of row-->
 </div>
 <!--end of container-->
 </section>

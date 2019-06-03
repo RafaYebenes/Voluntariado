@@ -16,11 +16,10 @@ if($asociacionId){
 
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE="edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" type="image/png" sizes="16x16" href="/eliteAdmin/plugins/images/favicon.png">
+	<link rel="icon" type="/img/asociacion.png" sizes="16x16" href="/eliteAdmin/plugins/images/favicon.png">
 	<title>Voluntariado </title>
 	<!-- Bootstrap Core CSS -->
 	<link href="/eliteAdmin/estilos/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -40,6 +39,9 @@ if($asociacionId){
 
 	<link href="/eliteAdmin/plugins/bower_components/jquery-wizard-master/css/wizard.css" rel="stylesheet">
 	<link href="/eliteAdmin/plugins/bower_components/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+
+	<link href="/eliteAdmin/plugins/bower_components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+	<link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -89,21 +91,16 @@ if($asociacionId){
 					</li>
 				</ul>
 				<ul class="nav navbar-top-links navbar-right pull-right">
-					<li class="dropdown">
-						<a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><i class="icon-envelope"></i>
-							<div class="notify"></div>
-						</a>
-					</li>
 
 					<li class="dropdown">
-						<a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><i class="icon-note"></i>
-							<div class="notify"></div>
+						<a class="dropdown-toggle waves-effect waves-light"  href="/GotoCrearActividad"><i class="icon-note" data-toggle="tooltip" data-placement="bottom" title="Crear Actividad"></i>
+
 						</a>
 						<ul class="dropdown-menu dropdown-tasks animated slideInUp">
 						</ul>
 					</li>
 					<li class="right-side-toggle">
-						<a class="waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i>
+						<a class="waves-effect waves-light" href="/AjustesCuentaAso"><i class="ti-settings" data-toggle="tooltip" data-placement="left" title="Ajustes"></i>
 						</a>
 					</li>
 				</ul>
@@ -116,16 +113,13 @@ if($asociacionId){
 			<div class="sidebar-nav navbar-collapse slimscrollsidebar">
 				<div class="user-profile">
 					<div class="dropdown user-pro-body">
-						<div><img src="/eliteAdmin/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"></div>
+						<div><img src="/{{ $asociacion->avatar }}" alt="user-img" class="img-circle"></div>
 
 						<a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ $asociacion->nombre }}<span class="caret"></span></a>
 						<ul class="dropdown-menu animated flipInY">
-							<li><a href="#"><i class="ti-user"></i> Perfil</a></li>
-							<li><a href="#"><i class="ti-email"></i> Mensajes</a></li>
+							<li><a href="/AjustesCuentaAso"><i class="ti-settings"></i> Ajustes de Cuenta</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="#"><i class="ti-settings"></i> Ajustes de Cuenta</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="cerrarSesionAso"><i class="fa fa-power-off"></i> Salir</a></li>
+							<li><a href="/cerrarSesionAso"><i class="fa fa-power-off"></i> Salir</a></li>
 						</ul>
 					</div>
 				</div>
@@ -147,7 +141,7 @@ if($asociacionId){
 					</li>
 					<li>
 
-						<a href="index.html" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i>
+						<a href="index.html" class="waves-effect "><i class="linea-icon linea-basic fa fa-group" ></i>
 							<span class="hide-menu"> Usuarios <span class="fa arrow"></span></span>
 						</a>
 						<ul class="nav nav-second-level">
@@ -156,10 +150,10 @@ if($asociacionId){
 						</ul>
 					</li>
 
-					<li> <a href="#" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Actividades<span class="fa arrow"></span> </span></a>
+					<li> <a href="#" class="waves-effect"><i data-icon="v" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Actividades<span class="fa arrow"></span> </span></a>
 						<ul class="nav nav-second-level">
-							<li> <a href="#">Gestionar Actividades</a> </li>
-							<li> <a href="GotoCrearActividad">Crear Actividad</a> </li>
+							<li> <a href="/GestionarActividades">Gestionar Actividades</a> </li>
+							<li> <a href="/GotoCrearActividad">Crear Actividad</a> </li>
 						</ul>
 					</li>
 
@@ -237,6 +231,15 @@ if($asociacionId){
 		<script src="/eliteAdmin/plugins/bower_components/moment/moment.js"></script>
 		<script src="/eliteAdmin/estilos/js/custom.min.js"></script>
 		<script src="/eliteAdmin/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/sweetalert/sweetalert.min.js"></script>
+		<script src="/eliteAdmin/plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script>
+		<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+		<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+		<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+		<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+		<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+		<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
 		<script type="text/javascript">
 
@@ -308,6 +311,7 @@ if($asociacionId){
 					swal("Message Finish!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
 				}
 			});
+
 
 			 // For multiselect
 
@@ -387,6 +391,21 @@ if($asociacionId){
 	</script>
 	<!--Style Switcher -->
 	<script src="eliteAdmin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+
+
+
+
+</script>
+<!--Style Switcher -->
+<script src="eliteAdmin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+</body>
+</html>
+
+
+
+</script>
+<!--Style Switcher -->
+<script src="eliteAdmin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 
 </body>
 </html>
