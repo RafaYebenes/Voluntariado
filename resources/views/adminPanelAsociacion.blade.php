@@ -383,12 +383,11 @@ if($asociacionId){
 			<script src="eliteAdmin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 		</body>
 		</html>
-		=======
-
 
 	</script>
 	<!--Style Switcher -->
 	<script src="eliteAdmin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+
 </body>
 </html>
 
