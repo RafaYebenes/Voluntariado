@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('GotoCrearActividad', function(){
 		return view('crearActividad');
 	});
+	Route::post('crearActividad', 'ofertaController@create');
 	Route::get('GestionarActividades', function (){
 		return view('gestionarActividades');
 	});

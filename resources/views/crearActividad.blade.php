@@ -18,7 +18,7 @@ $asociacionId = Auth::id();
 if($asociacionId){
 	$asociacion = asociacion::find($asociacionId);
 	$numUsuarios = usuario::where('id_asociacion','=',$asociacionId)->count();
-
+	$usuarios = usuario::where('id_asociacion','=',$asociacionId)->get();
 }
 ?>
 @section('Contenido')
@@ -49,11 +49,11 @@ if($asociacionId){
 			<div class="panel-heading"> Formulario de Creación  </div>
 			<div class="panel-wrapper collapse in" aria-expanded="true">
 				<div class="panel-body">
-					<form action="createUser" method="post" class="form-horizontal" enctype="multipart/form-data" files=true >
+					<form action="crearActividad" method="post" class="form-horizontal" enctype="multipart/form-data" files=true >
 						{!! csrf_field() !!}
 						<input type="text" name="id" hidden value="{{ Auth::id() }}">
 						<div class="form-body">
-							<h3 class="box-title">Información General</h3>
+							<h3 class="box-title">Información Principal</h3>
 							<hr class="m-t-0 m-b-40">
 							<div class="row">
 								<div class="col-md-6">
@@ -70,80 +70,82 @@ if($asociacionId){
 									<div class="form-group ">
 										<label class="control-label col-md-3">Descripción</label>
 										<div class="col-md-9">
-											<input type="text" class="form-control" name="Descripcion" placeholder="" required>
+											<input type="text" class="form-control" name="descripcion" placeholder="" required>
 										</div>
 									</div>
 								</div>
 								<!--/span-->
 							</div>
 							<!--/row-->
-							<h3 class="box-title"></h3>
+
+
+							<h3 class="box-title">Localización y Fecha </h3>
 							<hr class="m-t-0 m-b-40">
 							<div class="row">
 
-								<div class="col-md-6">
+								<div class="col-md-4">
 									<div class="form-group">
 										<label class="control-label col-md-3">Fecha</label>
 										<div class="col-md-9">
 											<div class="input-group">
-												<input type="text" class="form-control complex-colorpicke" id="datepicker-autoclose" name="fechaNacimiento" placeholder="mm/dd/yyyy">
+												<input type="text" class="form-control complex-colorpicke" id="datepicker-autoclose" name="fecha" placeholder="mm/dd/yyyy">
 												<span class="input-group-addon"><i class="icon-calender"></i></span>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-md-6">
+								<div class="col-md-4">
 									<div class="form-group">
 										<label class="control-label col-md-3">Hora</label>
 										<div class="col-md-9">
 											<div class="input-group">
-												<input type="text" class="form-control " name="Hora" placeholder="13:00">
+												<input type="text" class="form-control " name="hora" placeholder="13:00">
 												<span class="input-group-addon"><i class="icon-clock"></i></span>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-md-12">
+								<div class="col-md-4">
 									<div class="form-group">
-										<div class="col-md-12" >
-											<h3 class="box-title">Lugar</h3>
-											<div id="gmaps-simple" class="gmaps"></div>
+										<label class="control-label col-md-3">Lugar</label>
+										<div class="col-md-9">
+											<div class="input-group">
+												<input type="text" class="form-control " name="lugar" >
+												<span class="input-group-addon"><i class="icon-map"></i></span>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+
 							<!--/span-->
-							<h3 class="box-title">Datos de Contacto</h3>
+							<h3 class="box-title">Usuarios Y Voluntarios</h3>
 							<hr class="m-t-0 m-b-40">
 							<!--/row-->
 							<div class="row">
+								<div class="col-lg-4 col-md-6 col-sm-6">
+									<h5 class="box-title "><b>Usuarios Participantes</b></h5>
+									<div class="checkbox checkbox-success checkbox-circle">
+										<!--Para saber los usuarios que hemos seleccionado tendremos que crear un metodo en el controlador, que recorra todos los id de la tabla usuarios pertenecientes a esa asociacion. Después hara el input->id del usuario para todos y comprobara si este es nulo. En caso de no serlo se traerá los datos de ese usuario para añadirlo a la tabla de usuarios participantes. -->
+										@foreach ($usuarios as $element)
+										<input name="{{ 'Usuario'.$element->id }}" type="checkbox" value="{{ $element->id }}">
+										<label for="{{ 'Usuario'.$element->id }}"> {{ $element->nombre.' '.$element->apellidos }} </label><br>
+										@endforeach
+									</div>
 
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="control-label col-md-3">Email</label>
-										<div class="col-md-9">
-											<input type="text" class="form-control" name="email" placeholder="" required>
-										</div>
-									</div>
 								</div>
-								<!--/span-->
-								<div class="col-md-6">
+								<div class="col-md-6 ">
 									<div class="form-group">
-										<label class="control-label col-md-3">Contraseña</label>
+										<label class="control-label col-md-3">Voluntarios Necesarios</label>
 										<div class="col-md-9">
-											<input type="password" class="form-control" name="password" placeholder="" required>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="control-label col-md-3">Telefono de Contacto</label>
-										<div class="col-md-9">
-											<input type="text" class="form-control" name="telefono" required>
+											<div class="input-group">
+												<input type="int" class="form-control " name="VolNecesarios" required >
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+							<hr>
 						</div>
 						<div class="form-actions">
 							<div class="row">
@@ -163,8 +165,6 @@ if($asociacionId){
 		</div>
 	</div>
 </div>
-
-
 
 
 

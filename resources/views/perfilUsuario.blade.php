@@ -97,7 +97,7 @@ $actividadesParticipadas = UsuariosParticipantes::where('id_usuario', $id)->get(
 									<div class="sl-left"> <img src="/{{$usuario[0]->avatar  }}" alt="user" class="img-circle" /> </div>
 									<div class="sl-right">
 										<div class="m-l-40">{{$usuario[0]->nombre.' '.$usuario[0]->apellidos}} <span class="sl-date">{{ $oferta[0]->fecha }}</span>
-											<p>Participo en la actividad<a href="#"> {{ $oferta[0]->nombre }}</a></p>
+											<p>Participo en la actividad<a href="/vistaActividad/{{ $oferta[0]->id }}"> {{ $oferta[0]->nombre }}</a></p>
 
 										</div>
 									</div>
