@@ -11,6 +11,7 @@ use App\VoluntariosParticipantes;
 
 $voluntario = voluntario::find($id);
 $numActividades = voluntariosparticipantes::where('id_voluntario', $id)->count();
+$actividadesParticipadas = voluntariosparticipantes::where('id_voluntario', $id)->get();
 
 ?>
 @section('navBar')
@@ -37,13 +38,7 @@ $numActividades = voluntariosparticipantes::where('id_voluntario', $id)->count()
 					<span>Perfil</span>
 				</a>
 			</li>
-			<li >
-				<a class="waves-effect waves-light" data-toggle="dropdown" href="#">
-					<span>Actividades</span>
-				</a>
 
-				<!-- /.dropdown-messages -->
-			</li>
 			<!-- .Task dropdown -->
 			<li >
 				<a class="waves-effect waves-light" data-toggle="dropdown" href="#">
@@ -87,7 +82,7 @@ $numActividades = voluntariosparticipantes::where('id_voluntario', $id)->count()
 	</div>
 	@endif
 	<div class="row">
-		<div class="col-md-4 col-xs-12">
+		<div class="col-md-3 col-xs-12">
 			<div class="white-box">
 				<div class="user-bg"> <img width="100%" alt="user" src="/{{ $voluntario->avatar }}">
 					<div class="overlay-box">
@@ -110,10 +105,11 @@ $numActividades = voluntariosparticipantes::where('id_voluntario', $id)->count()
 				</div>
 			</div>
 		</div>
-		<div class="col-md-8 col-lg-8">
+		<div class="col-md-8 col-lg-9">
 			<div class="white-box">
 				<ul class="nav customtab nav-tabs" role="tablist">
 					<li role="presentation" class="nav-item"><a href="#settings" class="nav-link active" aria-controls="messages" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Perfil</span></a></li>
+					<li role="presentation" class="nav-item"><a href="#actividades" class="nav-link " aria-controls="messages" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Actividades</span></a></li>
 				</ul>
 				<div class="tab-content">
 
@@ -154,6 +150,30 @@ $numActividades = voluntariosparticipantes::where('id_voluntario', $id)->count()
 								</div>
 							</div>
 						</form>
+					</div>
+					<div class="tab-pane" id="actividades">
+						<div class="steamline">
+							@if (sizeof($actividadesParticipadas)==0)
+							<h3>{{ $voluntario->nombre }} todavia no ha participado en ninguna actividad</h3>
+							@else
+							@foreach ($actividadesParticipadas as $element)
+							<?php
+							$oferta = oferta::find($element->id_oferta);
+							?>
+
+							<div class="sl-item">
+								<div class="sl-left"> <img src="/{{$voluntario->avatar  }}" alt="user" class="img-circle" /> </div>
+								<div class="sl-right">
+									<div class="m-l-40">{{$voluntario->nombre.' '.$voluntario->apellidos}} <span class="sl-date">{{ $oferta->fecha }}</span>
+										<p>Participo en la actividad<a href="/vistaActividad/{{ $oferta->id }}"> {{ $oferta->nombre }}</a></p>
+
+									</div>
+								</div>
+							</div>
+							<hr>
+							@endforeach
+							@endif
+						</div>
 					</div>
 				</div>
 			</div>

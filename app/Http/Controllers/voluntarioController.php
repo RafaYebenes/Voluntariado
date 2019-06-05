@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\asociacion;
 use App\usuario;
 use App\voluntario;
+use App\oferta;
+use App\UsuariosParticipantes;
+use App\VoluntariosParticipantes;
 use DateTime;
 use Auth;
 use Input;
@@ -111,5 +114,31 @@ class voluntarioController extends Controller
 		}else{
 			return  redirect('/perfilVoluntario/'.$voluntario->id)->with('send', 'Fallo al actualizar el usuario');
 		}
+	}
+
+	public function apuntame(String $id){
+
+		$posDelimitador = strpos($id, "_");
+		$ids = str_split($id, $posDelimitador);
+		$idActividad = $ids[0];
+		$idVoluntario = $ids[$posDelimitador+1];
+
+		$actividad = oferta::find($idActividad);
+		$voluntariosApuntados = VoluntariosParticipantes::where('id_oferta', $actividad->id)->count();
+		if(($voluntariosApuntados+1)<$actividad->voluntarios_necesarios){
+			$participante = new VoluntariosParticipantes(array(
+				'id_oferta' => $idActividad,
+				'id_voluntario' => $idVoluntario,
+			));
+
+			if($participante->save()){
+				return redirect('actividadesVoluntarios/'.$id)->with('send','te has apuntado con exito');
+			}else{
+				return redirect('actividadesVoluntarios/'.$id)->withError('Fallo al inscribirte en la actividad');
+			}
+		}else{
+			return redirect('actividadesVoluntarios/'.$id)->withError('Lo siento, la actividad esta completa');
+		}
+
 	}
 }

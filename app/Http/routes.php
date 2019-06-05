@@ -76,6 +76,10 @@ Route::post('UpdateVoluntario', 'voluntarioController@update');
 Route::get('inicioVoluntarios/{id}', function ($id){
 	return view('inicioVoluntarios')->with('id', $id);
 });
+Route::get('actividadesVoluntarios/{id}', function($id){
+	return view('actividadesVoluntarios')->with('id', $id);
+});
+Route::get('apuntame/{id}','voluntarioController@apuntame');
 /**
  * Fin Rutas Voluntarios
  */

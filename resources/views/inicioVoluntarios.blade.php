@@ -36,13 +36,6 @@ $voluntario = voluntario::find($id);
 					<span>Perfil</span>
 				</a>
 			</li>
-			<li >
-				<a class="waves-effect waves-light" data-toggle="dropdown" href="#">
-					<span>Actividades</span>
-				</a>
-
-				<!-- /.dropdown-messages -->
-			</li>
 			<!-- .Task dropdown -->
 			<li >
 				<a class="waves-effect waves-light" data-toggle="dropdown" href="#">
@@ -65,6 +58,7 @@ $voluntario = voluntario::find($id);
 
 
 @section('Contenido')
+
 <div class="container-fluid">
 	<div class="row bg-title">
 		<!-- .page title -->
@@ -95,6 +89,7 @@ $voluntario = voluntario::find($id);
 							$descripcion = str_split($element->descripcion, 28);
 							$descripcion[0] = $descripcion[0].'...';
 
+
 						}else{
 							$descripcion = str_split($element->descripcion,28);
 						}
@@ -108,7 +103,7 @@ $voluntario = voluntario::find($id);
 									<h4 class="card-title">{{ $element->nombre }} </h4>
 									<p class="card-text">{{$descripcion[0]}}</p>
 									<p class="card-text"><i class="fa fa-calendar"></i> {{ $fecha}} <br> <i class="fa fa-map-marker"></i> {{ $element->lugar }}<br>  <i class="fa fa-users" data-toggle="tooltip" data-placement="top" title="Voluntarios Necesarios"></i>{{ $element->voluntarios_necesarios }} &nbsp; <i class="fa fa-wheelchair" data-toggle="tooltip" data-placement="top" title="Usuarios Apuntados"></i>{{ $usuApuntados }}<br> </p>
-									<a href="#" class="btn btn-primary">Ver Actividad</a>
+									<a href="/actividadesVoluntarios/{{ $element->id.'_'.$voluntario->id }}" class="btn btn-primary">Ver Actividad</a>
 								</div>
 							</div>
 						</div>

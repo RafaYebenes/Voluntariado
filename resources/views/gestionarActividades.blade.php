@@ -73,18 +73,18 @@ if($asociacionId){
 									<td>{{ $volApuntados }}</td>
 									<td>{{ $usuApuntados }}</td>
 								</tr>
-							</a>
-							@endforeach
-							@endif
-						</tbody>
-					</table>
-					<hr>
+
+								@endforeach
+								@endif
+							</tbody>
+						</table>
+						<hr>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-</div>
+	</div>
 </div>
 
 <script>
