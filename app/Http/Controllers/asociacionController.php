@@ -56,7 +56,7 @@ class asociacionController extends Controller
 		$asociacion->avatar = $ruta;
 
 		if($asociacion->save()){
-			return Redirect::to('auth/login')->with('send','Registro completado con exito!');
+			return Redirect::to('auth/loginAso')->with('send','Registro completado con exito!');
 		}
 	}
 	public function update(Request $request){

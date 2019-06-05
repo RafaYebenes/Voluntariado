@@ -81,7 +81,7 @@ class voluntarioController extends Controller
 		$voluntario = $voluntarios[0];
 
 		if(password_verify($request->input('password'), $voluntario->password)){
-			return view('/baseVoluntarios')->with('id', $voluntario->id);
+			return view('/inicioVoluntarios')->with('id', $voluntario->id);
 		}else{
 			return redirect('/')->with('send', 'Contraseña incorrecta');
 		}
@@ -89,5 +89,27 @@ class voluntarioController extends Controller
 	public function logout(){
 		Auth::logout();
 		return Redirect::to('/');
+	}
+	public function update(Request $request){
+
+		$this->validate($request, [
+			'nombre'            => 'required',
+			'apellidos' 	  => 'required',
+			'email'    	 	  => 'required',
+			'telefono'  	  => 'required',
+		]);
+
+		$voluntario = voluntario::find($request->input('id'));
+
+		$voluntario->nombre = $request->input('nombre');
+		$voluntario->apellidos = $request->input('apellidos');
+		$voluntario->email = $request->input('email');
+		$voluntario->telefono = $request->input('telefono');
+
+		if($voluntario->save()){
+			return redirect('/perfilVoluntario/'.$voluntario->id)->with('send','voluntario actualizado con exito');
+		}else{
+			return  redirect('/perfilVoluntario/'.$voluntario->id)->with('send', 'Fallo al actualizar el usuario');
+		}
 	}
 }

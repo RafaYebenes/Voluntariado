@@ -69,8 +69,12 @@ Route::get('loginVoluntario',function(){
 Route::post('createVoluntario', 'voluntarioController@create');
 Route::post('loginVoluntario', 'voluntarioController@login');
 Route::get('logoutVol', 'voluntarioController@logout');
-Route::get('baseVoluntarios', function(){
-	return view('baseVoluntarios');
+Route::get('perfilVoluntario/{id}', function($id){
+	return view('perfilVoluntario')->with('id',$id);
+});
+Route::post('UpdateVoluntario', 'voluntarioController@update');
+Route::get('inicioVoluntarios/{id}', function ($id){
+	return view('inicioVoluntarios')->with('id', $id);
 });
 /**
  * Fin Rutas Voluntarios

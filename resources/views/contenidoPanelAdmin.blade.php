@@ -41,7 +41,7 @@ if($asociacionId){
 			<div class="col-md-12 col-lg-12 col-sm-12">
 				<div class="white-box">
 					<div class="row row-in">
-						<div class="col-lg-4 col-sm-6 row-in-br">
+						<div class="col-lg-6 col-sm-6 row-in-br">
 							<div class="col-in row">
 								<div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="E" class="linea-icon linea-basic"></i>
 									<h5 class="text-muted vb">Usuarios</h5>
@@ -56,7 +56,7 @@ if($asociacionId){
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-4 col-sm-6 row-in-br  b-r-none">
+						<div class="col-lg-6 col-sm-6 row-in-br  b-r-none">
 							<div class="col-in row">
 								<div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe01b;"></i>
 									<h5 class="text-muted vb">Actividades</h5>
@@ -72,36 +72,8 @@ if($asociacionId){
 							</div>
 						</div>
 
-						<div class="col-md-4">
-							<div class="bg-theme m-b-15">
-								<div id="myCarouse2" class="carousel vcarousel slide p-20">
-									<!-- Carousel items -->
-									<div class="carousel-inner ">
-										<div class="active item">
-											<h5 class="text-white">My Acting blown <span class="font-bold">Your Mind</span> and you also laugh at the moment</h5>
-											<div class="twi-user"><img src="eliteAdmin/plugins/images/users/hritik.jpg" alt="user" class="img-circle img-responsive pull-left">
-												<h4 class="text-white m-b-0">Govinda</h4>
-												<p class="text-white">Actor</p>
-											</div>
-										</div>
-										<div class="item">
-											<h5 class="text-white">My Acting blown <span class="font-bold">Your Mind</span> and you also laugh at the moment</h5>
-											<div class="twi-user"><img src="eliteAdmin/plugins/images/users/genu.jpg" alt="user" class="img-circle img-responsive pull-left">
-												<h4 class="text-white m-b-0">Govinda</h4>
-												<p class="text-white">Actor</p>
-											</div>
-										</div>
-										<div class="item">
-											<h5 class="text-white">My Acting blown <span class="font-bold">Your Mind</span> and you also laugh at the moment</h5>
-											<div class="twi-user"><img src="eliteAdmin/plugins/images/users/ritesh.jpg" alt="user" class="img-circle img-responsive pull-left">
-												<h4 class="text-white m-b-0">Govinda</h4>
-												<p class="text-white">Actor</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+
+
 					</div>
 				</div>
 			</div>
@@ -127,102 +99,102 @@ if($asociacionId){
 
                     ?>
                     <div class="table-responsive">
-                     <table class="table ">
-                      <thead>
-                       <tr>
-                        <th>Nombre Actividad</th>
-                        <th>Fecha</th>
-                        <th>Lugar</th>
-                        <th>Voluntarios Necesarios</th>
-                        <th>Voluntarios Apuntados</th>
-                        <th>Nº de Participantes</th>
-                    </tr>
-                </thead>
+                       <table class="table ">
+                          <thead>
+                             <tr>
+                                <th>Nombre Actividad</th>
+                                <th>Fecha</th>
+                                <th>Lugar</th>
+                                <th>Voluntarios Necesarios</th>
+                                <th>Voluntarios Apuntados</th>
+                                <th>Nº de Participantes</th>
+                            </tr>
+                        </thead>
 
-                {{-- expr --}}
+                        {{-- expr --}}
 
-                <tbody>
-                    @if(sizeof($ofertas) == 0)
-                    <td>No has creado ninguna actividad aun</td>
-                    @else
-                    @foreach ($ofertas as $key)
-                    <?php
-                    $volApuntados = VoluntariosParticipantes::where('id_oferta',$key->id)->count();
-                    $usuApuntados = UsuariosParticipantes::where('id_oferta', $key->id)->count();
-                    ?>
-                    <tr>
-                        <td class="txt-oflo">{{ $key->nombre }}</td>
-                        <td class="txt-oflo">{{ $key->fecha  }}</td>
-                        <td class="txt-oflo">{{ $key->lugar  }}</td>
-                        <td class="txt-oflo">{{ $key->voluntarios_necesarios }}</td>
-                        <td class="txt-oflo">{{ $volApuntados }}</td>
-                        <td class="txt-oflo">{{ $usuApuntados }}</td>
-                    </tr>
-                    @endforeach
-                    @endif
-                </tbody>
+                        <tbody>
+                            @if(sizeof($ofertas) == 0)
+                            <td>No has creado ninguna actividad aun</td>
+                            @else
+                            @foreach ($ofertas as $key)
+                            <?php
+                            $volApuntados = VoluntariosParticipantes::where('id_oferta',$key->id)->count();
+                            $usuApuntados = UsuariosParticipantes::where('id_oferta', $key->id)->count();
+                            ?>
+                            <tr>
+                                <td class="txt-oflo">{{ $key->nombre }}</td>
+                                <td class="txt-oflo">{{ $key->fecha  }}</td>
+                                <td class="txt-oflo">{{ $key->lugar  }}</td>
+                                <td class="txt-oflo">{{ $key->voluntarios_necesarios }}</td>
+                                <td class="txt-oflo">{{ $volApuntados }}</td>
+                                <td class="txt-oflo">{{ $usuApuntados }}</td>
+                            </tr>
+                            @endforeach
+                            @endif
+                        </tbody>
 
-            </table>
-            <a href="/GestionarActividades">Comprueba todas las actividades</a> </div>
-        </div>
-    </div>
-    <?php
-    $ultimosUsuarios = usuario::Where('id_asociacion',$asociacionId)->orderBy('created_at','desc')->take(5)->get();
-    ?>
-    <div class="col-md-12 col-lg-4 col-sm-12">
-     <div class="white-box">
-        <h3 class="box-title">Ultimos Usuarios </h3>
-        <div class="comment-center">
-            @if(sizeof($ultimosUsuarios) == 0)
-            <div class="comment-body">
+                    </table>
+                    <a href="/GestionarActividades">Comprueba todas las actividades</a> </div>
+                </div>
+            </div>
+            <?php
+            $ultimosUsuarios = usuario::Where('id_asociacion',$asociacionId)->orderBy('created_at','desc')->take(5)->get();
+            ?>
+            <div class="col-md-12 col-lg-4 col-sm-12">
+               <div class="white-box">
+                <h3 class="box-title">Ultimos Usuarios </h3>
+                <div class="comment-center">
+                    @if(sizeof($ultimosUsuarios) == 0)
+                    <div class="comment-body">
 
-                <div class="mail-contnet">
-                   <h5>Todavia no has creado ningun usuario</h5>
-                   <br>
+                        <div class="mail-contnet">
+                         <h5>Todavia no has creado ningun usuario</h5>
+                         <br>
 
-               </div>
+                     </div>
+                 </div>
+                 @else
+                 @foreach ($ultimosUsuarios as $element)
+                 {{-- expr --}}
+                 <a href="PerfilUsuario/{{ $element->id }}">
+                     <div class="comment-body">
+                        <div class="user-img"> <img src="{{ $element->avatar }}" alt="user" class="img-circle"></div>
+                        <div class="mail-contnet">
+                           <h5>{{ $element->nombre.' '.$element->apellidos}}</h5>
+                           <br>
+                           <span class="label label-rounded label-success">Fecha de Creación {{ $element->created_at }}</span>
+                       </div>
+                   </div>
+               </a>
+               @endforeach
+               @endif
+
            </div>
-           @else
-           @foreach ($ultimosUsuarios as $element)
-           {{-- expr --}}
-           <a href="PerfilUsuario/{{ $element->id }}">
-               <div class="comment-body">
-                <div class="user-img"> <img src="{{ $element->avatar }}" alt="user" class="img-circle"></div>
-                <div class="mail-contnet">
-                 <h5>{{ $element->nombre.' '.$element->apellidos}}</h5>
-                 <br>
-                 <span class="label label-rounded label-success">Fecha de Creación {{ $element->created_at }}</span>
-             </div>
-         </div>
-     </a>
-     @endforeach
-     @endif
-
- </div>
- <br>
- <a href="GestionarUsuarios"> <span class="label label-rounded label-info">Todos</span></a>
- <!-- /.row -->
- <!-- .right-sidebar -->
- <div class="right-sidebar">
-     <div class="slimscrollright">
-        <div class="rpanel-title"> Panel de Ajustes <span><i class="ti-close right-side-toggle"></i></span> </div>
-        <div class="r-panel-body">
-           <ul>
-              <li><b>Opciones de Visualización</b></li>
-              <li>
-                 <div class="checkbox checkbox-info">
+           <br>
+           <a href="GestionarUsuarios"> <span class="label label-rounded label-info">Todos</span></a>
+           <!-- /.row -->
+           <!-- .right-sidebar -->
+           <div class="right-sidebar">
+               <div class="slimscrollright">
+                <div class="rpanel-title"> Panel de Ajustes <span><i class="ti-close right-side-toggle"></i></span> </div>
+                <div class="r-panel-body">
+                 <ul>
+                  <li><b>Opciones de Visualización</b></li>
+                  <li>
+                   <div class="checkbox checkbox-info">
                     <input id="checkbox1" type="checkbox" class="fxhdr">
                     <label for="checkbox1"> Fijar Barra de Navegación </label>
                 </div>
             </li>
             <li>
-             <div class="checkbox checkbox-success">
+               <div class="checkbox checkbox-success">
                 <input id="checkbox4" type="checkbox" class="open-close">
                 <label for="checkbox4"> Mostar Solo Iconos </label>
             </div>
         </li>
         <li>
-         <div class="checkbox checkbox-warning">
+           <div class="checkbox checkbox-warning">
             <input id="checkbox2" type="checkbox" class="fxsdr">
             <label for="checkbox2"> Fijar Barra Lateral </label>
         </div>
