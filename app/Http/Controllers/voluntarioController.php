@@ -118,14 +118,16 @@ class voluntarioController extends Controller
 
 	public function apuntame(String $id){
 
-		$posDelimitador = strpos($id, "_");
-		$ids = str_split($id, $posDelimitador);
+		$ids = explode('_',$request->id );
 		$idActividad = $ids[0];
-		$idVoluntario = $ids[$posDelimitador+1];
+		$idVoluntario = $ids[1];
 
 		$actividad = oferta::find($idActividad);
 		$voluntariosApuntados = VoluntariosParticipantes::where('id_oferta', $actividad->id)->count();
 		if(($voluntariosApuntados+1)<$actividad->voluntarios_necesarios){
+
+
+
 			$participante = new VoluntariosParticipantes(array(
 				'id_oferta' => $idActividad,
 				'id_voluntario' => $idVoluntario,
@@ -140,5 +142,21 @@ class voluntarioController extends Controller
 			return redirect('actividadesVoluntarios/'.$id)->withError('Lo siento, la actividad esta completa');
 		}
 
+	}
+
+	public function puntuar(Request $request){
+		$this->validate($request, [
+			'puntuacion'            => 'required|numeric|max:10|min:0',
+		]);
+
+		$ids = explode('_',$request->id );
+		$idActividad = $ids[0];
+		$idVoluntario = $ids[1];
+		$idUsuario = $ids[2];
+		var_dump($request->id);
+		var_dump($idActividad);
+		var_dump($idVoluntario);
+		var_dump($idUsuario);
+		die();
 	}
 }

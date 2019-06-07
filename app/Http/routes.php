@@ -80,6 +80,10 @@ Route::get('actividadesVoluntarios/{id}', function($id){
 	return view('actividadesVoluntarios')->with('id', $id);
 });
 Route::get('apuntame/{id}','voluntarioController@apuntame');
+Route::get('puntuacionesVoluntario/{id}', function($id){
+	return view('puntuacionvoluntario')->with('id', $id);
+});
+Route::post('puntuarUsuario', 'voluntarioController@puntuar');
 /**
  * Fin Rutas Voluntarios
  */

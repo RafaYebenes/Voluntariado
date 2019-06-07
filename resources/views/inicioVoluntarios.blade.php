@@ -38,7 +38,7 @@ $voluntario = voluntario::find($id);
 			</li>
 			<!-- .Task dropdown -->
 			<li >
-				<a class="waves-effect waves-light" data-toggle="dropdown" href="#">
+				<a class="waves-effect waves-light" href="/puntuacionesVoluntario/{{ $voluntario->id }}">
 					<span>Puntuaciones</span>
 				</a>
 			</li>
