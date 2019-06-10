@@ -94,22 +94,22 @@
                                     <!--end dropdown container-->
                                 </li>
                                 <li class="">
-                                 <a href="/#contact"><span class="dropdown__trigger">Contacto</span></a>
-                                 <!--end dropdown container-->
-                             </li>
-                         </ul>
-                     </div>
+                                   <a href="/#contact"><span class="dropdown__trigger">Contacto</span></a>
+                                   <!--end dropdown container-->
+                               </li>
+                           </ul>
+                       </div>
 
-                     <!--end module-->
-                 </div>
-             </div>
-             <!--end of row-->
-         </div>
-         <!--end of container-->
-     </nav>
-     <!--end bar-->
- </div>
- <!--end bar-->
+                       <!--end module-->
+                   </div>
+               </div>
+               <!--end of row-->
+           </div>
+           <!--end of container-->
+       </nav>
+       <!--end bar-->
+   </div>
+   <!--end bar-->
 </div>
 
 <div class="main-container">
@@ -123,8 +123,8 @@
 
                     <!--Formulario Inicio Sesión-->
                     <form class="slideUp" id="formLogin" action="/auth/login" method="post">
-                     {!! csrf_field() !!}
-                     <div class="col-md-12">
+                       {!! csrf_field() !!}
+                       <div class="col-md-12">
                         <img src="img/asociacion.png"  height="150px" width="150px" >
                     </div>
                     <h2>Inicio Sesión Asociaciones</h2>
@@ -144,15 +144,12 @@
                         </div>
                     </div>
 
-                    <span class="type--fine-print block">¿Ha olvidado sus datos?
-                        <a href="page-accounts-recover.html">Recuperar cuenta</a>
-                    </span>
                 </form>
                 <!--Fin Formulario Inicio Sesión-->
                 <!--Cominezo Formulario Registro-->
                 <form class="slideDown" id="formRegistro" action="createAsociacion" method="post" enctype="multipart/form-data" files=true >
-                   {!! csrf_field() !!}
-                   <div class="col-md-12">
+                 {!! csrf_field() !!}
+                 <div class="col-md-12">
                     <img src="img/asociacion.png"  height="150px" width="150px" >
                 </div>
                 <h2>Registro Asociación</h2>
@@ -193,9 +190,9 @@
                     </div>
 
                     <div class="col-md-6">
-                     <button type="submit" class=" btn btn-primary type--uppercase btn-lg btn-block " > Registro  </button>
-                 </div>
-                 <div class="col-md-6">
+                       <button type="submit" class=" btn btn-primary type--uppercase btn-lg btn-block " > Registro  </button>
+                   </div>
+                   <div class="col-md-6">
 
                     <button type="button" class="btn btn-warning type--uppercase  btn-block" id="btnVolver">Volver</button>
                 </div>
@@ -236,9 +233,9 @@
         $('#formRegistro').show();
     });
     $('#btnVolver').click(function(){
-       $('#formLogin').show();
-       $('#formRegistro').hide();
-   });
+     $('#formLogin').show();
+     $('#formRegistro').hide();
+ });
 
 </script>
 </body>

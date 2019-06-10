@@ -184,8 +184,8 @@ $asociaciones = 1;
                                                         </p>
                                                     </div>
                                                     <form action="loginUser" method="post">
-                                                       {!! csrf_field() !!}
-                                                       <div class="row">
+                                                     {!! csrf_field() !!}
+                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <input type="text" name="email" placeholder="Email" />
                                                         </div>
@@ -296,22 +296,17 @@ $asociaciones = 1;
                         <ul class="list-inline list--hover">
                             <li>
                                 <a href="#">
-                                    <span>Our Company</span>
+                                    <span>Nuestra Compañia</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <span>Locations</span>
+                                    <span>Localización</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <span>Products</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span>Work With Us</span>
+                                    <span>Trabaja con nosotros</span>
                                 </a>
                             </li>
                         </ul>

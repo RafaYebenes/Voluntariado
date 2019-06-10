@@ -65,7 +65,7 @@ class voluntarioController extends Controller
 		$voluntario->avatar = $ruta;
 
 		if($voluntario->save()){
-			return view('baseVoluntarios');
+			return view('loginVoluntario')->with('send', 'Registro Completado con exito');
 		}else{
 			return  redirect('')->with('send', 'Fallo al añadir el voluntario');
 		}
@@ -125,7 +125,7 @@ class voluntarioController extends Controller
 
 		$actividad = oferta::find($idActividad);
 		$voluntariosApuntados = VoluntariosParticipantes::where('id_oferta', $actividad->id)->count();
-		if(($voluntariosApuntados+1)<$actividad->voluntarios_necesarios){
+		if(($voluntariosApuntados+1)<=$actividad->voluntarios_necesarios){
 
 
 

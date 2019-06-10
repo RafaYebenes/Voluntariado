@@ -180,6 +180,3 @@ $fecha = "";
 <script src="/eliteAdmin/plugins/bower_components/ion-rangeslider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
 <script src="/eliteAdmin/plugins/bower_components/ion-rangeslider/js/ion-rangeSlider/ion.rangeSlider-init.js"></script>
 <script src="/eliteAdmin/plugins/bower_components/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript">
-
-</script>

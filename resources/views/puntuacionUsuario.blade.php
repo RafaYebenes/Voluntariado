@@ -55,6 +55,26 @@ $fecha = "";
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <script  src="/eliteAdmin/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="/eliteAdmin/estilos/bootstrap/dist/js/tether.min.js"></script>
+  <script src="/eliteAdmin/estilos/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/eliteAdmin/plugins/bower_components/bootstrap-extension/js/bootstrap-extension.min.js"></script>
+  <!-- Sidebar menu plugin JavaScript -->
+  <script src="/eliteAdmin/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+  <!--Slimscroll JavaScript For custom scroll-->
+  <script src="/eliteAdmin/estilos/js/jquery.slimscroll.js"></script>
+  <!--Wave Effects -->
+  <script src="/eliteAdmin/estilos/js/waves.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script src="/eliteAdmin/estilos/js/custom.min.js"></script>
+  <script src="/eliteAdmin/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/eliteAdmin/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="/eliteAdmin/plugins/bower_components/ion-rangeslider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+  <script src="/eliteAdmin/plugins/bower_components/ion-rangeslider/js/ion-rangeSlider/ion.rangeSlider-init.js"></script>
+  <script src="/eliteAdmin/plugins/bower_components/jquery/dist/jquery.min.js"></script>
   <script>
     (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -123,9 +143,9 @@ $fecha = "";
 
                     </li>
                     <li class="nav-small-cap m-t-10">--- Inicio</li>
-                    <li><a href="javascript:void(0)" class="waves-effect active" ><i  class="linea-icon linea-basic fa fa-home"></i> <span class="hide-menu">Inicio</span></a> </li>
+                    <li><a href="/inicioUsuario/{{ $usuario->id }}" class="waves-effect " ><i  class="linea-icon linea-basic fa fa-home"></i> <span class="hide-menu">Inicio</span></a> </li>
                     <li>
-                        <a href="javascript:void(0)" class="waves-effect "><i data-icon="v" class="fa fa-star"></i> <span class="hide-menu">Puntuaciones</span></a>
+                        <a href="javascript:void(0)" class="waves-effect active"><i data-icon="v" class="fa fa-star"></i> <span class="hide-menu">Puntuaciones</span></a>
                     </li>
                 </ul>
             </div>
@@ -184,11 +204,13 @@ $fecha = "";
                                     $voluntario = voluntario::find($element2->id_voluntario);
                                     if(($oferta!=null)&&($voluntario !=null)){
                                         $haSidoPuntuado = UsuarioPuntuaVoluntario::where('id_actividad', $oferta->id)->where('id_voluntario', $voluntario->id)->where('id_usuario', $usuario->id)->first();
+
                                     }else{
-                                        $haSidoPuntuado = null;
+                                        $haSidoPuntuado = 1;
 
                                     }
                                     ?>
+
                                     @if ($haSidoPuntuado == null)
 
                                     <div class="col-md-2 col-lg-">
@@ -219,11 +241,14 @@ $fecha = "";
                                     @else
                                     <?php
                                     $num = $num+1;
+
                                     ?>
                                     @endif
                                     @endforeach
+
                                     @if (($num == $participantes))
-                                    <script type="text/javascript">$('#Actividad{{ $oferta->id }}').hide() </script>
+
+                                    <script type="text/javascript"> $('#Actividad{{ $oferta->id }}').hide(); </script>
                                     <?php $count = $count +1;?>
                                     @endif
                                 </div>
@@ -231,7 +256,6 @@ $fecha = "";
                         </div>
                         @endif
                         @endforeach
-
                         @if ($count == $numActividadesParticipadas)
                         <div class="white-box">
                             <h3 class="box-title">No tienes voluntarios por puntuar</h3>
@@ -244,20 +268,11 @@ $fecha = "";
         </div>
     </div>
 
+
     <!-- jQuery -->
-    <script src="/eliteAdmin/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
-    <script src="/eliteAdmin/estilos/bootstrap/dist/js/tether.min.js"></script>
-    <script src="/eliteAdmin/estilos/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/eliteAdmin/plugins/bower_components/bootstrap-extension/js/bootstrap-extension.min.js"></script>
-    <!-- Sidebar menu plugin JavaScript -->
-    <script src="/eliteAdmin/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
-    <!--Slimscroll JavaScript For custom scroll-->
-    <script src="/eliteAdmin/estilos/js/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
-    <script src="/eliteAdmin/estilos/js/waves.js"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="/eliteAdmin/estilos/js/custom.min.js"></script>
+
 
 </body>
 </html>

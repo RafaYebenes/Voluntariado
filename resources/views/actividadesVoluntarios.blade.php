@@ -56,7 +56,7 @@ $voluntariosApuntados = VoluntariosParticipantes::where('id_oferta', $actividad-
 			</li>
 			<!-- .Task dropdown -->
 			<li >
-				<a class="waves-effect waves-light" href="#">
+				<a class="waves-effect waves-light" href="/puntuacionesVoluntario/{{ $voluntario->id }}">
 					<span>Puntuaciones</span>
 				</a>
 			</li>
