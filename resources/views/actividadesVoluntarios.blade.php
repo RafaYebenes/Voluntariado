@@ -8,10 +8,10 @@ use App\UsuariosParticipantes;
 use App\VoluntariosParticipantes;
 
 
-$posDelimitador = strpos($id, "_");
-$ids = str_split($id, $posDelimitador);
+
+$ids = explode('_',$id );
 $idActividad = $ids[0];
-$idVoluntario = $ids[$posDelimitador+1];
+$idVoluntario = $ids[1];
 
 $voluntario = voluntario::find($idVoluntario);
 $actividad = oferta::find($idActividad);

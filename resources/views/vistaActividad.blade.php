@@ -17,6 +17,7 @@ use App\VoluntariosParticipantes;
 
 $asociacionId = Auth::id();
 $oferta = oferta::find($id);
+$usuariosParticipantes = usuariosParticipantes::where('id_oferta', $oferta->id)->get();
 
 ?>
 <?php
@@ -62,6 +63,33 @@ $oferta = oferta::find($id);
 							<div class="col-md-12">
 								<input  type="text" class="form-control form-control-line" value="" placeholder="{{ $oferta->voluntarios_necesarios }}" data-plugin="touchSpin" name="voluntarios_necesarios" >
 							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label">Usuarios Participantes</label>
+							<div class="">
+								<table class="table table-striped">
+									<thead>
+										<tr>
+
+										</tr>
+									</thead>
+									<tbody>
+										@foreach ($usuariosParticipantes as $element)
+										<?php
+										$usuario = usuario::find($element->id_usuario);
+										?>
+										<tr>
+											<td><img src="/{{ $usuario->avatar }}"  class="img-circle"  width="15%"></td>
+											<td>{{ $usuario->nombre.' '.$usuario->apellidos }}</td>
+										</tr>
+										@endforeach
+									</tbody>
+
+								</table>
+								<hr>
+							</div>
+
 						</div>
 
 						<div class="form-group">

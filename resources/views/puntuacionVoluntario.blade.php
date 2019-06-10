@@ -8,11 +8,15 @@ use App\voluntario;
 use App\oferta;
 use App\UsuariosParticipantes;
 use App\VoluntariosParticipantes;
+use App\VoluntarioPuntuaUsuario;
 
 
 $voluntario = voluntario::find($id);
 $IdActividadesParticipadas = VoluntariosParticipantes::Where('id_voluntario', $id)->get();
-
+$numActividadesParticipadas =  VoluntariosParticipantes::Where('id_voluntario', $id)->count();
+$count = 0;
+$oferta = "";
+$fecha = "";
 
 ?>
 
@@ -25,7 +29,7 @@ $IdActividadesParticipadas = VoluntariosParticipantes::Where('id_voluntario', $i
 		<!-- /Logo -->
 		<!-- Search input and Toggle icon -->
 		<ul class="nav navbar-top-links navbar-left hidden-xs">
-			<a class="logo" href="">
+			<a class="logo" href="/inicioVoluntarios/{{ $voluntario->id }}">
 				<b>
 					<!--This is dark logo icon--><img src="/img/iconos/UsersWhite.png" alt="home" class="dark-logo" with="40%" height="40%" />
 				</b>
@@ -42,7 +46,7 @@ $IdActividadesParticipadas = VoluntariosParticipantes::Where('id_voluntario', $i
 			</li>
 			<!-- .Task dropdown -->
 			<li >
-				<a class="waves-effect waves-light" data-toggle="dropdown" href="#">
+				<a class="waves-effect waves-light" href="/puntuacionesVoluntario/{{ $voluntario->id }}">
 					<span>Puntuaciones</span>
 				</a>
 			</li>
@@ -65,24 +69,40 @@ $IdActividadesParticipadas = VoluntariosParticipantes::Where('id_voluntario', $i
 
 <div class="container-fluid">
 	<div class="row bg-title">
+
 		<!-- .page title -->
 		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
 			<h4 class="page-title">Puntuaciones</h4>
 		</div>
-		<!-- /.page title -->
-		<!-- .breadcrumb -->
 
-		<!-- /.breadcrumb -->
 	</div>
+	@if ( Session::has('send') )
+	<div class="alert alert-success margin-b-30">
+		{{Session::get('send')}}
+	</div>
+	@endif
+
+	@if (count($errors) > 0)
+	<div class="alert alert-danger margin-b-30">
+		<ul>
+			@foreach ($errors->all() as $error)
+			<li>{{ $error }}</li>
+			@endforeach
+		</ul>
+	</div>
+	@endif
 	<!-- .row -->
 	<div class="row">
 		<div class="col-md-12">
 			@foreach ($IdActividadesParticipadas as $element)
-			<div class="white-box">
-				<?php
 
+			<div class="white-box" id="Actividad{{$element->id_oferta}}">
+
+				<?php
 				$oferta = oferta::find($element->id_oferta);
 				$usuariosParticantes = UsuariosParticipantes::where('id_oferta', $oferta->id)->get();
+				$participantes = UsuariosParticipantes::where('id_oferta', $oferta->id)->count();
+				$num = 0;
 				$fecha = date('d-M-Y', strtotime($oferta->fecha));
 
 				?>
@@ -94,8 +114,15 @@ $IdActividadesParticipadas = VoluntariosParticipantes::Where('id_voluntario', $i
 						<?php
 
 						$usuario = usuario::find($element2->id_usuario);
+						if(($oferta!=null)&&($usuario!=null)){
+							$haSidoPuntuado = VoluntarioPuntuaUsuario::where('id_actividad', $oferta->id)->where('id_voluntario', $voluntario->id)->where('id_usuario', $usuario->id)->first();
+						}else{
+							$haSidoPuntuado = null;
 
+						}
 						?>
+						@if ($haSidoPuntuado == null)
+
 						<div class="col-md-2 col-lg-">
 							<div class="card">
 								<img class="card-img-top image-responsive" src="/{{ $usuario->avatar }}"  alt="Card image cap">
@@ -120,11 +147,25 @@ $IdActividadesParticipadas = VoluntariosParticipantes::Where('id_voluntario', $i
 								<br>
 							</div>
 						</div>
+						@else
+						<?php
+						$num = $num+1;
+						?>
+						@endif
 						@endforeach
+						@if ($num == $participantes)
+						<script type="text/javascript">$('#Actividad{{ $oferta->id }}').hide() </script>
+						<?php $count = $count +1;?>
+						@endif
 					</div>
 				</div>
 			</div>
 			@endforeach
+			@if ($count == $numActividadesParticipadas)
+			<div class="white-box">
+				<h3 class="box-title">No tienes usuarios por puntuar</h3>
+			</div>
+			@endif
 		</div>
 	</div>
 	<!-- .row -->
@@ -134,9 +175,7 @@ $IdActividadesParticipadas = VoluntariosParticipantes::Where('id_voluntario', $i
 </div>
 @endsection
 
-@section('footer')
-@parent
-@endsection
+
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="/eliteAdmin/plugins/bower_components/ion-rangeslider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
 <script src="/eliteAdmin/plugins/bower_components/ion-rangeslider/js/ion-rangeSlider/ion.rangeSlider-init.js"></script>

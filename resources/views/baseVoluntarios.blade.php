@@ -64,9 +64,7 @@ $voluntario = voluntario::find($id);
 			<!-- /.container-fluid -->
 
 		</div>
-		@section('footer')
-		<footer class="footer text-center"> 2019 &copy; Creado por Rafael Yébenes Rivera </footer>
-		@show
+
 		<!-- /#page-wrapper -->
 
 	</div>

@@ -9,6 +9,7 @@ use App\voluntario;
 use App\oferta;
 use App\UsuariosParticipantes;
 use App\VoluntariosParticipantes;
+use App\VoluntarioPuntuaUsuario;
 use DateTime;
 use Auth;
 use Input;
@@ -118,7 +119,7 @@ class voluntarioController extends Controller
 
 	public function apuntame(String $id){
 
-		$ids = explode('_',$request->id );
+		$ids = explode('_',$id );
 		$idActividad = $ids[0];
 		$idVoluntario = $ids[1];
 
@@ -150,13 +151,27 @@ class voluntarioController extends Controller
 		]);
 
 		$ids = explode('_',$request->id );
-		$idActividad = $ids[0];
-		$idVoluntario = $ids[1];
-		$idUsuario = $ids[2];
-		var_dump($request->id);
-		var_dump($idActividad);
-		var_dump($idVoluntario);
-		var_dump($idUsuario);
-		die();
+		$existePuntuacion = VoluntarioPuntuaUsuario::where('id_actividad', $ids[0])->where('id_voluntario', $ids[1])->where('id_usuario', $ids[2])->count();
+
+
+		if($existePuntuacion == 0){
+			$puntuacion = new VoluntarioPuntuaUsuario(array(
+				'id_actividad'  => $ids[0],
+				'id_voluntario' => $ids[1],
+				'id_usuario'	=> $ids[2],
+				'puntuacion'	=> $request->input('puntuacion'),
+			));
+
+			$puntuacion->save();
+
+			$usuario = usuario::find($ids[2]);
+			$usuario->puntuacion =  VoluntarioPuntuaUsuario::where('id_usuario', $ids[2])->avg('puntuacion');
+			$usuario->save();
+
+			return redirect('puntuacionesVoluntario/'.$ids[1])->with('send','Puntuación realizada');
+		}else{
+			return redirect('puntuacionesVoluntario/'.$ids[1])->withError('Ya has puntuado a este usuario');
+		}
+
 	}
 }

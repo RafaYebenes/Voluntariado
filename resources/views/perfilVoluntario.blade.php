@@ -34,14 +34,14 @@ $actividadesParticipadas = voluntariosparticipantes::where('id_voluntario', $id)
 		<ul class="nav navbar-top-links navbar-right pull-right">
 			<li>
 
-				<a class=" waves-effect waves-light" href="#">
+				<a class=" waves-effect waves-light" href="/perfilVoluntario/{{ $voluntario->id }}">
 					<span>Perfil</span>
 				</a>
 			</li>
 
 			<!-- .Task dropdown -->
 			<li >
-				<a class="waves-effect waves-light" data-toggle="dropdown" href="#">
+				<a class="waves-effect waves-light" href="/puntuacionesVoluntario/{{ $voluntario->id }}">
 					<span>Puntuaciones</span>
 				</a>
 			</li>
