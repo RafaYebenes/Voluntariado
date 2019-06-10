@@ -93,6 +93,10 @@ Route::post('puntuarUsuario', 'voluntarioController@puntuar');
  */
 Route::post('loginUser', 'usuarioController@login');
 Route::get('logoutUser', 'usuarioController@logout');
+Route::get('puntuacionesUsuario/{id}', function($id){
+	return view('puntuacionUsuario')->with('id', $id);
+});
+Route::post('puntuarVoluntario', 'usuarioController@puntuar');
 /**
  * Fin Rutas Usuario
  */

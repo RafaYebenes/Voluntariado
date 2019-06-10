@@ -118,7 +118,7 @@ $actividadesParticipadas = UsuariosParticipantes::where('id_usuario', $id)->get(
                     <li class="nav-small-cap m-t-10">--- Inicio</li>
                     <li><a href="javascript:void(0)" class="waves-effect active" ><i  class="linea-icon linea-basic fa fa-home"></i> <span class="hide-menu">Inicio</span></a> </li>
                     <li>
-                        <a href="javascript:void(0)" class="waves-effect "><i data-icon="v" class="fa fa-star"></i> <span class="hide-menu">Puntuaciones</span></a>
+                        <a href="/puntuacionesUsuario/{{$usuario[0]->id}}" class="waves-effect "><i data-icon="v" class="fa fa-star"></i> <span class="hide-menu">Puntuaciones</span></a>
                     </li>
                 </ul>
             </div>
@@ -134,21 +134,7 @@ $actividadesParticipadas = UsuariosParticipantes::where('id_usuario', $id)->get(
                         <h4 class="page-title">Perfil</h4>
                     </div>
                 </div>
-                @if ( Session::has('send') )
-                <div class="alert alert-success margin-b-30">
-                    {{Session::get('send')}}
-                </div>
-                @endif
 
-                @if (count($errors) > 0)
-                <div class="alert alert-danger margin-b-30">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
                         <div class="white-box">
@@ -195,9 +181,9 @@ $actividadesParticipadas = UsuariosParticipantes::where('id_usuario', $id)->get(
                                         <div class="sl-item">
                                             <div class="sl-left"> <img src="/{{$usuario[0]->avatar  }}" alt="user" class="img-circle" /> </div>
                                             <div class="sl-right">
-                                                <div class="m-l-40">{{$usuario[0]->nombre.' '.$usuario[0]->apellidos}} <span class="sl-date">{{ $oferta[0]->fecha }}</span>
+                                                <div class="m-l-40">
+                                                    {{$usuario[0]->nombre.' '.$usuario[0]->apellidos}} <span class="sl-date">{{ $oferta[0]->fecha }}</span>
                                                     <p>Participo en la actividad<a href="#" > {{ $oferta[0]->nombre }}</a></p>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -206,8 +192,6 @@ $actividadesParticipadas = UsuariosParticipantes::where('id_usuario', $id)->get(
                                         @endif
                                     </div>
                                 </div>
-
-
                                 <div class="tab-pane active" id="settings">
                                     <form class="form-horizontal form-material " action="/UpdateUser" enctype="multipart/form-data" method="post">
                                         {!! csrf_field() !!}
@@ -236,8 +220,6 @@ $actividadesParticipadas = UsuariosParticipantes::where('id_usuario', $id)->get(
                                                 <input type="text" placeholder="{{ $usuario[0]->telefono }}" class="form-control form-control-line" name="telefono" value="{{ $usuario[0]->telefono }}">
                                             </div>
                                         </div>
-
-
                                     </form>
                                 </div>
                             </div>
@@ -246,9 +228,9 @@ $actividadesParticipadas = UsuariosParticipantes::where('id_usuario', $id)->get(
                 </div>
             </div>
         </div>
-
-        <!-- /#page-wrapper -->
     </div>
+    <!-- /#page-wrapper -->
+
     <!-- /#wrapper -->
     <!-- jQuery -->
     <script src="/eliteAdmin/plugins/bower_components/jquery/dist/jquery.min.js"></script>
@@ -264,6 +246,7 @@ $actividadesParticipadas = UsuariosParticipantes::where('id_usuario', $id)->get(
     <script src="/eliteAdmin/estilos/js/waves.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="/eliteAdmin/estilos/js/custom.min.js"></script>
-</body>
 
+</body>
 </html>
+

@@ -9,6 +9,8 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use App\Http\Requests;
 use App\asociacion;
 use App\usuario;
+use App\voluntario;
+use App\UsuarioPuntuaVoluntario;
 use DateTime;
 use Auth;
 use Input;
@@ -123,5 +125,35 @@ class UsuarioController extends Controller
 	public function logout(){
 		Auth::logout();
 		return Redirect::to('/');
+	}
+
+	public function puntuar(Request $request){
+		$this->validate($request, [
+			'puntuacion'            => 'required|numeric|max:10|min:0',
+		]);
+
+		$ids = explode('_',$request->id );
+		$existePuntuacion = UsuarioPuntuaVoluntario::where('id_actividad', $ids[0])->where('id_voluntario', $ids[1])->where('id_usuario', $ids[2])->count();
+
+
+		if($existePuntuacion == 0){
+			$puntuacion = new UsuarioPuntuaVoluntario(array(
+				'id_actividad'  => $ids[0],
+				'id_voluntario' => $ids[1],
+				'id_usuario'	=> $ids[2],
+				'puntuacion'	=> $request->input('puntuacion'),
+			));
+
+			$puntuacion->save();
+
+			$voluntario = voluntario::find($ids[1]);
+			$voluntario->puntuacion =  UsuarioPuntuaVoluntario::where('id_voluntario', $ids[1])->avg('puntuacion');
+			$voluntario->save();
+
+			return redirect('puntuacionesUsuario/'.$ids[2])->with('send','Puntuación realizada');
+		}else{
+			return redirect('puntuacionesUsuario/'.$ids[2])->withError('Ya has puntuado a este usuario');
+		}
+
 	}
 }
